@@ -10,7 +10,7 @@ function Navigation() {
         <div className="dashboard">
             <div><Link to="/" class="dashLink"><i className="bi bi-people-fill"></i>Register</Link></div>
             <div><Link to="/services" class="dashLink"><i className="bi bi-journal-medical"></i>Service Management</Link></div> 
-
+            
         </div>
         </>
     ) 

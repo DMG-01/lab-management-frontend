@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Navigation from "./navigation"
+import {useNavigate} from "react-router-dom";
 
 interface Service {
   id: number;
@@ -11,8 +12,13 @@ interface Service {
 }
 
 function Services() {
+
+    const navigate = useNavigate()
   const [services, setServices] = useState<Service[]>([]);
 
+  const viewMore = (serviceId : number) =>{
+    navigate(`/services/${serviceId}`)
+  }
   const getServices = async () => {
     try {
       const response = await axios.get("http://localhost:5000/service/");
@@ -77,7 +83,7 @@ function Services() {
             <p>{service.price}</p>
             <p>{new Date(service.updatedAt).toLocaleDateString()}</p>
             <p>{new Date(service.createdAt).toLocaleDateString()}</p>
-            <button ><i className="bi bi-three-dots-vertical"></i></button>
+            <button onClick = {()=>{viewMore(service.id)}}><i className="bi bi-three-dots-vertical"></i></button>
           </div>
         ))}
       </div>
