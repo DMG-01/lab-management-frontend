@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import Navigaton from "./navigation"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Register() {
@@ -81,7 +82,9 @@ function Register() {
   }, []);
 
   return (
-    <>
+    <div className ="registerBody">
+    <Navigaton />
+    <div className="register">
       <div className="top">
         <div>
           <h4>G.G able medical laboratory</h4>
@@ -247,7 +250,8 @@ function Register() {
       </div>
 
       }
-    </>
+      </div>
+    </div>
   );
 }
 

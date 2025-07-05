@@ -1,12 +1,47 @@
 .register {
 
-  margin-top:5%;
-;
 }
 body {
 background-color: lightgray;
   margin-left:2%;
   margin-right : 2%;
+}
+
+.dashboard {
+  border : 1px solid green;
+  width : 30%;
+  padding-top:4%;
+}
+
+.dashboard div {
+  margin-bottom : 20px;
+}
+
+.dashboard i {
+ margin-right :5px;
+}
+
+.dashboard :hover {
+  color : white;
+  background-color: lightcoral;
+}
+
+.dashLink {
+  color :lightcoral;
+  text-decoration : none;
+  font-size : 22px;
+  font-weight :900;
+}
+
+.registerBody {
+  display : flex;
+
+}
+
+.register {
+  border : 1px solid red;
+  height : 100%;
+
 }
 .register .head, .register .body {
   display : flex;
