@@ -8,8 +8,8 @@ background-color: lightgray;
 }
 
 .dashboard {
-  border : 1px solid green;
-  width : 30%;
+ 
+  max-width : 160px;
   padding-top:4%;
 }
 
@@ -33,13 +33,13 @@ background-color: lightgray;
   font-weight :900;
 }
 
-.registerBody {
+.registerBody, .serviceBody {
   display : flex;
 
 }
 
 .register {
-  border : 1px solid red;
+
   height : 100%;
 
 }
@@ -228,8 +228,9 @@ background-color: lightgray;
 }
 
 .serviceSection {
-  border: 1px solid red;
+ 
   padding:2%;
+  width : 100%;
 }
 
 .serviceHeading h2  {
