@@ -33,7 +33,7 @@ background-color: lightgray;
   font-weight :900;
 }
 
-.registerBody, .serviceBody {
+.registerBody, .serviceBody, .serviceDetailBody {
   display : flex;
 
 }
@@ -287,6 +287,8 @@ border-bottom : 1px solid grey;
 .serviceDetail {
  
   padding-left :2%;
+  width : 100%;
+  margin-top:4%;
 }
 .eachServiceComponent button {
   background-color: transparent;
@@ -299,6 +301,7 @@ border-bottom : 1px solid grey;
 .eachParamsHeading, .eachParams {
   display : flex;
   align-items : center;
+  padding-left :3%;
 }
 
 .eachParams {
