@@ -7,9 +7,13 @@ function RenderServiceDetail(props: { serviceId: number }) {
   const navigate = useNavigate();
   const [service, setService] = useState<any>(null);
   const [edit, setEdit] = useState(false)
-  const [name, setName] = useState("ee")
+  const [name, setName] = useState("")
   const [unit, setUnit] = useState(" ")
   const [referenceValue, setReferenceValue] = useState("")
+  const [newName, setNewName] = useState<string>("")
+  const [newValue, setNewValue] = useState<string>(" ")
+  const [newReferenceRange, setNewReferenceRange] = useState<string>(" ")
+
   const [parameterId, setParameterId] = useState<number>()
   const [serviceId, setServiceId] =useState<number>()
   
@@ -51,9 +55,15 @@ function RenderServiceDetail(props: { serviceId: number }) {
       <Navigation />
       <div className="serviceDetail">
         <div className="heading">
+          <div className="navBtn">
           <button className="back" onClick={returnBack}>
             <i className="bi bi-arrow-left-short">back</i>
           </button>
+
+          <button className = "addNewProp">
+            <i className="bi bi-plus">Add new</i>
+          </button>
+          </div>
           <h2>Service Name: {service ? service.name : "..."}</h2>
           <h3>Price: {service ? service.price : "..."} </h3>
           <h3>Service Id: {service ? service.id : "..."} </h3>
@@ -102,7 +112,16 @@ function RenderServiceDetail(props: { serviceId: number }) {
               </p>
               <div>
                 <button className="editButton" onClick={()=> {editParameter(parameter.id,parameter.serviceTemplateId, parameter.name, parameter.unit, parameter.referenceValue)}}><i className="bi bi-pencil-fill"></i></button>
-                <button className="deleteButton"><i className="bi bi-trash3-fill"></i></button>
+                <button className="deleteButton"  onClick = {async()=> {
+
+                  const response = await axios.delete(`http://localhost:5000/service/${parameter.serviceTemplateId}/property/${parameter.id}`)
+                  if(response.status == 200) {
+                    alert("successfully deleted")
+                  }
+                  else {
+                    alert("an error occured")
+                  }
+                }}><i className="bi bi-trash3-fill"></i></button>
               </div>
             </div>
           ))}
@@ -134,6 +153,62 @@ function RenderServiceDetail(props: { serviceId: number }) {
       </div>
 
       }
+
+      <div className="addNewParameter">
+        <div className="eachInput">
+           <div>property name*</div>
+            <div> <input type="text" placeholder="property name" value={newName} onChange={(e)=> {setNewName(e.target.value)}} /> </div>
+        </div>
+
+         <div className="eachInput">
+           <div>property unit*</div>
+            <div><input type="text" placeholder="property unit" value = {newValue} onChange={(e)=> {setNewValue(e.target.value)}} /></div>
+        </div>
+
+          <div className="eachInput">
+           <div>reference value*</div>
+            <div><input type="text" placeholder="reerence value" value={newReferenceRange} onChange={(e)=> {setNewReferenceRange(e.target.value)}} /></div>
+        </div>
+
+
+        <div><button onClick= {
+
+            
+          async ()=> {
+
+            try{
+             
+              if(newName === "" || newValue === " " || newReferenceRange === " ") {
+              alert(`empty input field`)
+            }
+
+            else {
+              alert({ newName, serviceId, newValue, newReferenceRange });
+
+            const response = await axios.patch(`http://localhost:5000/service/addProperty`,{
+              "propertyName":newName, 
+              "serviceId" : service.id, 
+              "propertyUnit" : newValue, 
+              "referenceValue" : newReferenceRange
+            })
+
+            alert(response.status)
+            if(response.status == 200) {
+              alert("new property added")
+              getServiceDetails(serviceId!)
+              setNewName(" ")
+              setNewValue(" ")
+              setNewReferenceRange(" ")
+            }
+          }
+            }catch(error) {
+              alert(error)
+            }
+            
+        }
+      }>ADD</button></div>
+        
+      </div>
       </div>
 
       

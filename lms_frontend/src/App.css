@@ -289,10 +289,20 @@ border-bottom : 1px solid grey;
   margin-top:4%;
 }
 
-.serviceDetail .back {
+.navBtn {
+  display : flex;
+  align-items: center
+}
+
+.serviceDetail .back, .serviceDetail .addNewProp {
   border-radius : 10px;
-  height :30px;
+  height :40px;
   width : 70px;
+  margin-right :10px;
+}
+
+.serviceDetail .addNewProp {
+  width : 100px;
 }
 .eachServiceComponent button {
   background-color: transparent;
