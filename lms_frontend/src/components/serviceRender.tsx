@@ -114,13 +114,20 @@ function RenderServiceDetail(props: { serviceId: number }) {
                 <button className="editButton" onClick={()=> {editParameter(parameter.id,parameter.serviceTemplateId, parameter.name, parameter.unit, parameter.referenceValue)}}><i className="bi bi-pencil-fill"></i></button>
                 <button className="deleteButton"  onClick = {async()=> {
 
-                  const response = await axios.delete(`http://localhost:5000/service/${parameter.serviceTemplateId}/property/${parameter.id}`)
+                  try {
+                    alert(`paramter id : ${parameter.id}`)
+                    alert(`parameter service id : ${parameter.serviceTemplateId}`)
+                  const response = await axios.delete(`http://localhost:5000/service/${parameter.serviceTemplateId}/removeproperty/${parameter.id}`)
                   if(response.status == 200) {
                     alert("successfully deleted")
+                    window.location.reload()
                   }
                   else {
                     alert("an error occured")
                   }
+                }catch(error) {
+                  alert(error)
+                }
                 }}><i className="bi bi-trash3-fill"></i></button>
               </div>
             </div>
@@ -183,7 +190,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
             }
 
             else {
-              alert({ newName, serviceId, newValue, newReferenceRange });
+             
 
             const response = await axios.patch(`http://localhost:5000/service/addProperty`,{
               "propertyName":newName, 
@@ -192,13 +199,12 @@ function RenderServiceDetail(props: { serviceId: number }) {
               "referenceValue" : newReferenceRange
             })
 
-            alert(response.status)
             if(response.status == 200) {
-              alert("new property added")
               getServiceDetails(serviceId!)
               setNewName(" ")
               setNewValue(" ")
               setNewReferenceRange(" ")
+              window.location.reload()
             }
           }
             }catch(error) {

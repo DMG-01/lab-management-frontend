@@ -15,6 +15,9 @@ function Services() {
 
     const navigate = useNavigate()
   const [services, setServices] = useState<Service[]>([]);
+  const [addingNewService, setAddingNewService] = useState(false)
+  const [newServiceName, setNewServiceName] = useState<string>()
+  const [newServicePrice, setNewServicePrice] = useState<string>()
 
   const viewMore = (serviceId : number) =>{
     navigate(`/services/${serviceId}`)
@@ -28,10 +31,37 @@ function Services() {
       console.error("Error fetching services:", error);
     }
   };
+const addNewService = async () => {
+  alert(`clicked`);
+  try {
+    if (!newServiceName || !newServicePrice) {
+      alert(`empty input field`);
+    } else {
+      const response = await axios.post("http://localhost:5000/service", {
+        name: newServiceName,
+        price: Number(newServicePrice), // ✅ FIXED LINE
+      });
+
+      alert(response.status);
+
+      if (response.status === 200 || response.status === 201) {
+        alert("new service added");
+        setNewServiceName(undefined);
+        setNewServicePrice(undefined);
+        setAddingNewService(false);
+        getServices(); // ✅ this is fine
+      }
+    }
+  } catch (error: any) {
+    console.error(error);
+    alert(error?.response?.data?.msg || "Error occurred");
+  }
+};
+
 
   useEffect(() => {
     getServices();
-  }, []);
+  }, [addingNewService]);
 
   return (
     <div className="serviceBody">
@@ -50,8 +80,16 @@ function Services() {
         <div>
           <input type="text" placeholder=" 🔍 search by name" />
         </div>
+
+        <div><button  onClick={()=> {setAddingNewService(true)}}><i className="bi bi-plus">New service</i></button></div>
       </div>
 
+    {
+
+      !addingNewService
+
+      &&
+      <div>
       <div className="servicePlaceholder">
         <div>
           <h3>s/n</h3>
@@ -87,6 +125,32 @@ function Services() {
           </div>
         ))}
       </div>
+
+      </div>
+
+}
+
+      {
+        addingNewService
+
+        &&
+        <div className="addNewService">
+        <div className="eachInput">
+          <div><p>Service Name*</p></div>
+          <div><input type="text" placeholder="service name"  value= {newServiceName}   onChange={(e)=> {setNewServiceName(e.target.value)}}/></div>
+        </div>
+
+        <div className="eachInput">
+          <div><p>Service Price</p></div>
+          <div><input type="text" placeholder="service price" value= {newServicePrice}  onChange={(e)=> {setNewServicePrice(e.target.value)}} /></div>
+        </div>
+
+        <div className="newButtons">
+          <button onClick = {()=> {setAddingNewService(false)}}>Back</button>
+          <button  onClick={()=>addNewService()}>SAVE</button></div>
+      </div>
+
+}
     </div>
     </div>
   );

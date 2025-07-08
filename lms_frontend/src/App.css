@@ -250,11 +250,79 @@ background-color: lightgray;
    font-size :16px;
 }
 
+.serviceFiltering {
+  display : flex;
+  align-items : center;
+  justify-content: space-between;
+}
+
+.serviceFiltering button {
+  width :130px;
+  height : 50px;
+  border-radius : 10px;
+  border : none;
+  background-color: lightcoral;
+  color : white;
+  font-weight : 800;
+}
+
 .servicePlaceholder,.eachServiceComponent {
   background-color: lightcoral;
   margin-top :15px;
   display : flex;
   padding-left :5px;
+}
+
+.addNewService {
+  
+  display : flex;
+  flex-direction : column;
+  justify-content: center;
+  padding :3%;
+  width :40%;
+  margin-left:35%;
+  margin-right : 15%;
+
+}
+
+.newButtons {
+  display : flex;
+  flex-direction: row;
+}
+
+.newButtons button {
+  margin-right :10px;
+}
+
+.eachInput {
+  display : flex;
+  flex-direction :column;
+  align-items : left; 
+  width : 100%;
+}
+
+.eachInput p {
+  font-size :1.2rem;
+  margin-bottom :0;
+}
+
+.eachInput input {
+  width :300px;
+  height :40px;
+  font-size :17px;
+  padding-left :5px;
+}
+
+.addNewService button {
+  width :100px;
+  height : 40px;
+  margin-top :30px;
+  margin-bottom : 20px;
+  border-radius : 7px;
+  border : none ;
+  background-color: lightcoral;
+  color : white;
+  font-weight :800;
 }
 
 .servicePlaceholder div {
