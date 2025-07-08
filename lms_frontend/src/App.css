@@ -1,6 +1,4 @@
-.register {
 
-}
 body {
 background-color: lightgray;
   margin-left:2%;
@@ -110,7 +108,7 @@ background-color: lightgray;
   background-color : white;
   padding-top:5%;
   border-radius :30px;
-  width :80%;
+  width :110%;
   margin-left:10%;
   padding:2%;
   height :400px
@@ -290,6 +288,12 @@ border-bottom : 1px solid grey;
   width : 100%;
   margin-top:4%;
 }
+
+.serviceDetail .back {
+  border-radius : 10px;
+  height :30px;
+  width : 70px;
+}
 .eachServiceComponent button {
   background-color: transparent;
   border : none;
@@ -313,6 +317,27 @@ border-bottom : 1px solid grey;
   width : calc(100%/6)
 }
 
+.eachParams button {
+  margin-right : 5px;
+}
+
+.editButton i {
+  color : lightcoral
+}
+.editButton, .deleteButton {
+  border-radius : 50%;
+  height : 30px;
+  width : 30px;
+  border : 1px solid lightcoral;
+}
+
+.deleteButton i {
+  color : red;
+}
+
+.deleteButton {
+  border : 1px solid red;
+}
 .testParameter {
   
    background-color :lightcoral;
