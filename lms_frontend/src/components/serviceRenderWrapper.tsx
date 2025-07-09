@@ -11,7 +11,7 @@ function RenderServiceDetailWrapper() {
 
 function RenderViewRegisterWrapper() {
   const {id} = useParams<{id : string}>()
-  return <ViewRegister id= {Number(id)} />
+  return <ViewRegister id={Number(id)} />
 }
 
 export {RenderServiceDetailWrapper, RenderViewRegisterWrapper}
