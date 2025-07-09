@@ -53,15 +53,26 @@ function ViewRegister() {
       <h4>Test: {eachService.name}</h4>
       <p>Price: #{eachService.price}</p>
 
-      <div className="parameters">
-        <h5>Parameters:</h5>
-        {eachService.template?.testParameters?.map((param: any) => (
-          <div key={param.id} className="parameterItem">
-            <p><strong>{param.name}</strong> ({param.unit})</p>
-            <p>Ref: {param.referenceValue}</p>
-          </div>
-        ))}
-      </div>
+     <div className="parameters">
+  <h5>Parameters:</h5>
+  {eachService.template?.testParameters?.map((param: any) => (
+    <div key={param.id} className="parameterItem">
+      <p>
+        <strong>{param.name}</strong> ({param.unit})
+      </p>
+      <p>Ref: {param.referenceValue}</p>
+
+      {param?.results?.length > 0 ? (
+        param.results.map((result: any) => (
+          <p key={result.id}>Result: {result.value}</p>
+        ))
+      ) : (
+        <p>No result recorded</p>
+      )}
+    </div>
+  ))}
+</div>
+
     </div>
   ))}
 </div>
