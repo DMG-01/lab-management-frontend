@@ -41,7 +41,7 @@ background-color: lightgray;
   height : 100%;
 
 }
-.register .head, .register .body {
+.register .head {
   display : flex;
   flex-direction:row;
   justify-content: space-evenly;
@@ -55,9 +55,34 @@ background-color: lightgray;
   background-color : snow;
   height:100%;
 }
+.register .head h3 {
+  text-align: center;
+}
+
+.register .body {
+    display : flex;
+  flex-direction:row;
+  justify-content: space-evenly;
+  align-items: center;
+
+  padding-top:0;
+  padding-bottom:0;
+  background-color: lightgray;
+
+  background-color : snow;
+  height:100%;
+}
+
+.body button{
+  display : flex;
+  align-items: normal;
+  margin: 0;
+  padding :0;
+}
 
 .register .head {
-  background-color:lightcoral
+  background-color:lightcoral;
+  width : auto
 }
 
 .head h3, .body p {

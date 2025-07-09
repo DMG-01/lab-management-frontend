@@ -1,9 +1,13 @@
 import { useState, useEffect } from "react";
+import {Link} from "react-router-dom"
 import axios from "axios";
 import Navigaton from "./navigation"
+import {useNavigate} from "react-router-dom"
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
 function Register() {
+
+  const navigate = useNavigate()
   const [patients, setPatients] = useState([]);
   const [registeringPatient, isRegisteringPatient] = useState(false)
   const [services, setServices] = useState([]);
@@ -115,6 +119,7 @@ function Register() {
 
         {patients.map((patient: any, index) => (
           <div className="body" key={index}>
+            <button  onClick={()=> {navigate(`/viewRegisterPage/${patient.id}`)}}>
             <p>{index + 1}</p>
             <p>{patient.patient?.firstName || "-"}</p>
             <p>{patient.patient?.lastName || "-"}</p>
@@ -134,6 +139,7 @@ function Register() {
                 "-"
               )}
             </p>
+            </button>
           </div>
         ))}
       </div>

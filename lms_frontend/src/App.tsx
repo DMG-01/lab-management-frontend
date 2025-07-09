@@ -6,7 +6,7 @@ import './App.css'
 import Navigation from "./components/navigation"
 import Register from "./components/register"
 import Services from "./components/services"
-import RenderServiceDetailWrapper from './components/serviceRenderWrapper';
+import {RenderServiceDetailWrapper, RenderViewRegisterWrapper} from './components/serviceRenderWrapper';
 
 function App() {
 
@@ -18,6 +18,7 @@ function App() {
      <Route path= "/navigation" element = {<Navigation/>}/>
      <Route path= "/services" element = {<Services/>}/>
 <Route path="/services/:id" element={<RenderServiceDetailWrapper />} />
+<Route path="/viewRegisterPage/:id" element={<RenderViewRegisterWrapper/>} />
 
       </Routes>
     </Router>
