@@ -55,7 +55,18 @@ function ViewRegister() {
 
      <div className="parameters">
   <h5>Parameters:</h5>
-  {eachService.template?.testParameters?.map((param: any) => (
+
+  <div className="eachServiceResult">
+    {eachService?.testResult?.map((eachResult : any)=> (
+      <div className="resultComponent">
+        <p>{eachResult.value}</p>
+        <p>{eachResult.parameter.name}({eachResult.parameter.unit})</p>
+        <p>{eachResult.parameter.referenceValue}</p>
+        </div>
+      
+    ))}
+  </div>
+  {/*eachService.template?.testParameters?.map((param: any) => (
     <div key={param.id} className="parameterItem">
       <p>
         <strong>{param.name}</strong> ({param.unit})
@@ -70,7 +81,7 @@ function ViewRegister() {
         <p>No result recorded</p>
       )}
     </div>
-  ))}
+  ))*/}
 </div>
 
     </div>

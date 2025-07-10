@@ -461,4 +461,10 @@ border-bottom : 1px solid grey;
   justify-content: space-around;
 }
 
+.resultComponent {
+  display : flex;
+  align-items : center;
+  justify-content : space-around;
+}
+
 
