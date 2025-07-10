@@ -1,21 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
-import test from "node:test";
-
-interface ResultInterface {
-  testVisitNumber : number, 
-  serviceId : number, 
-  parameterTemplateId : number, 
-  result : string 
-}
 
 function ViewRegister() {
   const { id } = useParams<{ id: string }>();
   const [registerDetail, setRegisterDetail] = useState<any>(null);
-  const [result, setResult] = useState<any>()
-  const [resultValue, setResultValue] = useState<string>()
-  const [isEditing, setIsEditing] = useState(false)
+  const [result, setResult] = useState<any>();
+  const [resultValue, setResultValue] = useState<string>("");
+  const [isEditing, setIsEditing] = useState(false);
+  const [uploadingServiceId, setUploadingServiceId] = useState<number | null>(null);
+  const [parameterInputs, setParameterInputs] = useState<any[]>([]);
 
   const getRegisterDetail = async () => {
     try {
@@ -31,6 +25,18 @@ function ViewRegister() {
     }
   };
 
+  const uploadResult = async (serviceTemplateId: number, serviceId: number) => {
+    try {
+      const response = await axios.get(`http://localhost:5000/service/${serviceTemplateId}`);
+      if (response.status === 200) {
+        setUploadingServiceId(serviceId);
+        setParameterInputs(response.data._service.testParameters);
+      }
+    } catch (error) {
+      alert("Error fetching service parameters");
+    }
+  };
+
   useEffect(() => {
     if (id) {
       getRegisterDetail();
@@ -40,85 +46,92 @@ function ViewRegister() {
   return (
     <div className="viewRegister">
       <div className="viewRehHeading">
-        <div className="name">
-          <h3>Name : {registerDetail?.patient?.firstName} {registerDetail?.patient?.lastName}</h3>
-        </div>
-        <div className="phoneNumber">
-          <h3>Phone Number : {registerDetail?.patient?.phoneNumber}</h3>
-        </div>
-        <div className="email">
-          <h3>Email : {registerDetail?.patient?.email}</h3>
-        </div>
-        <div className="date">
-          <h3>Date Taken : {registerDetail?.dateTaken}</h3>
-        </div>
-        <div className="amountPaid">
-          <h3>Amount Paid : #{registerDetail?.amountPaid}</h3>
-        </div>
+        <h3>Name: {registerDetail?.patient?.firstName} {registerDetail?.patient?.lastName}</h3>
+        <h3>Phone: {registerDetail?.patient?.phoneNumber}</h3>
+        <h3>Email: {registerDetail?.patient?.email}</h3>
+        <h3>Date Taken: {registerDetail?.dateTaken}</h3>
+        <h3>Amount Paid: #{registerDetail?.amountPaid}</h3>
 
-        <div><button onClick={ ()=> setIsEditing(true)}>edit</button></div>
-
-        {isEditing &&
-        <div>
-          <input type="text" value = {resultValue} onChange={(e)=> {setResultValue(e.target.value)}} />
-          <button  onClick = { async ()=> {
-
-            try {
-              const response = await axios.patch(`http://localhost:5000/staff/Result/edit`, {
-                serviceId : result.serviceId, 
-                resultId : result.id,
-                newValue : resultValue
-              })
-
-            if(response.status === 200) {
-              alert(` result change successful`)
-            }
-            }catch(error) {
-              alert(error)
-            }
-          }}>save</button>
+        <button onClick={() => setIsEditing(true)}>Edit</button>
+        {isEditing && (
+          <div>
+            <input type="text" value={resultValue} onChange={(e) => setResultValue(e.target.value)} />
+            <button
+              onClick={async () => {
+                try {
+                  const response = await axios.patch(`http://localhost:5000/staff/Result/edit`, {
+                    serviceId: result.serviceId,
+                    resultId: result.id,
+                    newValue: resultValue,
+                  });
+                  if (response.status === 200) {
+                    alert("Result changed successfully");
+                    setIsEditing(false);
+                    getRegisterDetail(); // Refresh
+                  }
+                } catch (error) {
+                  alert("Error saving result");
+                }
+              }}
+            >
+              Save
+            </button>
           </div>
-        
-        }
+        )}
       </div>
 
       <div className="registerServices">
-  <h3>Services:</h3>
-  {registerDetail?.services?.map((eachService: any) => (
-    <div className="eachService" key={eachService.id}>
-      <h4>Test: {eachService.name}</h4>
-      <p>Price: #{eachService.price}</p>
+        <h3>Services:</h3>
+        {registerDetail?.services?.map((eachService: any) => (
+          <div key={eachService.id} className="eachService">
+            <h4>Test: {eachService.name}</h4>
+            <p>Price: #{eachService.price}</p>
 
-     <div className="parameters">
-  <h5>Parameters:</h5>
+            <button onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>
+              Upload Result
+            </button>
 
-<div className="eachServiceResult">
-  {
-    !eachService?.testResult || eachService.testResult.length === 0 ? (
-      <p>no result found</p>
-    ) : (
-      eachService.testResult.map((eachResult: any) => (
-        <div className="resultComponent" key={eachResult.id}>
-          <button onClick = {()=> {
-            setResult(eachResult)
-            setResultValue(eachResult.value)
-          }}>
-          <p>{eachResult.parameter.name}</p>
-          <p>{eachResult.value}</p>
-          <p>{eachResult.parameter.referenceValue}{eachResult.parameter.unit}</p>
-          </button>
-        </div>
-      ))
-    )
-  }
-</div>
+            {uploadingServiceId === eachService.id && (
+              <div className="uploadForm">
+                {parameterInputs.map((param: any) => (
+                  <div key={param.id}>
+                    <p>{param.name}</p>
+                    <input
+                      type="text"
+                      placeholder={`Enter ${param.name}`}
+                      // You can track values using another state if needed
+                    />
+                  </div>
+                ))}
+              </div>
+            )}
 
-</div>
-
-    </div>
-  ))}
-</div>
-
+            <div className="parameters">
+              <h5>Parameters:</h5>
+              {!eachService?.testResult || eachService.testResult.length === 0 ? (
+                <p>No result found</p>
+              ) : (
+                eachService.testResult.map((eachResult: any) => (
+                  <div className="resultComponent" key={eachResult.id}>
+                    <button
+                      onClick={() => {
+                        setResult(eachResult);
+                        setResultValue(eachResult.value);
+                      }}
+                    >
+                      <p>
+                        {eachResult.parameter.name} ({eachResult.parameter.unit})
+                      </p>
+                      <p>{eachResult.value}</p>
+                      <p>{eachResult.parameter.referenceValue}</p>
+                    </button>
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
