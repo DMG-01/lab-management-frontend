@@ -461,10 +461,17 @@ border-bottom : 1px solid grey;
   justify-content: space-around;
 }
 
-.resultComponent {
+.resultComponent button{
   display : flex;
+  width : 100%;
   align-items : center;
   justify-content : space-around;
+}
+
+.eachServiceResult {
+  display : flex;
+  flex-direction :column;
+  justify-content: center;
 }
 
 
