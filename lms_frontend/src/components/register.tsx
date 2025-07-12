@@ -91,7 +91,7 @@ function Register() {
     <div className="register">
       <div className="top">
         <div>
-          <h4>G.G able medical laboratory</h4>
+          <h4 className="text-4xl font-bold text-blue-600">G.G able medical laboratory</h4>
         </div>
         <div>
           <button onClick = {()=> isRegisteringPatient(true)}>

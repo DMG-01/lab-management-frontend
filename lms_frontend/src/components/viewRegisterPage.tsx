@@ -10,6 +10,7 @@ function ViewRegister() {
   const [isEditing, setIsEditing] = useState(false);
   const [uploadingServiceId, setUploadingServiceId] = useState<number | null>(null);
   const [parameterInputs, setParameterInputs] = useState<any[]>([]);
+  const [uploadResultValue, setUploadResultValue] = useState<string|undefined>()
 
   const getRegisterDetail = async () => {
     try {
@@ -99,8 +100,32 @@ function ViewRegister() {
                     <input
                       type="text"
                       placeholder={`Enter ${param.name}`}
+                      value = {uploadResultValue}
+                      onChange = {(e)=>{setUploadResultValue(e.target.value)}}
                       // You can track values using another state if needed
                     />
+                    <button onClick= {async ()=> {
+
+                      if(uploadResultValue === undefined) {
+                        alert("empty input string")
+                      }
+
+                      try {
+                      const response = await axios.patch(`http://localhost:5000/staff/upload`, {
+                        serviceId : eachService.id, 
+                        parameterTemplateId : param.id, 
+                        result : uploadResultValue
+                      })
+
+                      if(response.status === 200) {
+                        alert(`upload successful`)
+                        setUploadResultValue("")
+                      }
+
+                    }catch(error) {
+                      alert(error)
+                    }
+                    }}>SAVE</button>
                   </div>
                 ))}
               </div>

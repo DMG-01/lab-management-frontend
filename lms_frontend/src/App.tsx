@@ -2,7 +2,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 
-import './App.css'
+//import './App.css'
+//import "./index.css"
 import Navigation from "./components/navigation"
 import Register from "./components/register"
 import Services from "./components/services"

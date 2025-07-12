@@ -69,7 +69,8 @@ const addNewService = async () => {
     <div className="serviceSection">
       <div className="serviceHeading">
         <div>
-          <h2>Service Management</h2>
+          <h2
+          >Service Management</h2>
         </div>
         <div>
           <p>Track and monitor services and their parameter</p>
