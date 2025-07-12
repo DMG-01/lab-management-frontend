@@ -91,11 +91,13 @@ function Register() {
     <div className="register">
       <div className="top">
         <div>
-          <h4 className="text-4xl font-bold text-blue-600">G.G able medical laboratory</h4>
+          <h4>G.G able medical laboratory</h4>
         </div>
-        <div>
+        <div className="regNav">
+
+          <input type="text" placeholder="🔍 Search" />
           <button onClick = {()=> isRegisteringPatient(true)}>
-            Register <i className="bi bi-pencil-square"></i>
+            Register <i className="bi bi-chevron-right"></i>
           
           </button>
         </div>

@@ -3,63 +3,89 @@
 @tailwind utilities;
 
 body {
-background-color: lightgray;
-  margin-left:2%;
-  margin-right : 2%;
+background-color: white;
+
 }
 
 .dashboard {
- 
-  max-width : 160px;
+  display : flex;
+  position:sticky;
+  top : 0;
+  width : 100%;
+  justify-content: space-between;
   padding-top:4%;
+  background-color: #3d506e;
+  padding-left : 2%;
+  margin-left : 0;
+
 }
 
 .dashboard div {
   margin-bottom : 20px;
+  display : flex;
+  flex-direction : column;
 }
 
 .dashboard i {
  margin-right :5px;
+ font-size : 30px;
 }
 
 .dashboard :hover {
   color : white;
-  background-color: lightcoral;
 }
 
 .dashLink {
-  color :lightcoral;
+  color :white;
   text-decoration : none;
   font-size : 22px;
   font-weight :900;
+  display : flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .registerBody, .serviceBody, .serviceDetailBody {
   display : flex;
+flex-direction : column;
+width :100%;
+overflow-x : hidden;
 
+}
+
+.register .top {
+    display: flex;
+    flex-direction : column;
+    align-items: left;
 }
 
 .register {
-
-  height : 100%;
-
+overflow-x: auto;
+white-space: nowrap;
+ margin-left : 2%;
 }
+
+
 .register .head {
-  display : flex;
-  flex-direction:row;
+  display: flex;
   justify-content: space-evenly;
   align-items: center;
-  padding-left:1%;
-  padding-right:1%;
-  padding-top:0;
-  padding-bottom:0;
-  background-color: lightgray;
-
-  background-color : snow;
-  height:100%;
+  background-color:rgb(189, 145, 106);
+  height: 50px;
+  width :auto;
+  overflow-x: auto;
+  border-top-left-radius: 15px;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  position:sticky;
+  top :0;
+  left:0;
 }
+
 .register .head h3 {
   text-align: center;
+  flex : 1;
 }
 
 .register .body {
@@ -76,16 +102,14 @@ background-color: lightgray;
   height:100%;
 }
 
-.body button{
-  display : flex;
-  align-items: normal;
-  margin: 0;
-  padding :0;
-}
-
-.register .head {
-  background-color:lightcoral;
-  width : auto
+.body button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border :none;
+  background-color:lightyellow;
+  cursor: pointer;
 }
 
 .head h3, .body p {
@@ -96,23 +120,37 @@ background-color: lightgray;
   border-bottom:2px solid grey;
 }
 
-.body p {
-  
-}
 
 .top {
   display : flex;
   flex-direction:row;
   justify-content: space-between;
-  align-items : center
+}
+
+.top input {
+    height :60px;
+    padding:2%;
+    border :3px solid lightgrey;
+    border-radius : 8px;
+    font-size : 18px;
+}
+
+.regNav {
+    display : flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .top h4 {
-  font-size :32px;
+    color :#0f151f;
+  font-size :27px;
+  line-height: 40px;
+  font-weight :600;
 }
 .top button {
   height : 70px;
   width : 130px;
+  border-radius : 10px;
 }
 
 .top i {
@@ -123,10 +161,14 @@ background-color: lightgray;
   display : flex;
   align-items: center;
   justify-content: space-evenly;
-  font-size : 19px;
-  color : lightcoral;
+  font-size : 25px;
+  color : white;
+  height :50px;
+  padding :10px;
+  font-weight :500;
   background-color : lightgray;
-  border : none 
+  border : none ;
+  background-color : #3d506e;
 }
 
 
@@ -477,4 +519,14 @@ border-bottom : 1px solid grey;
   justify-content: center;
 }
 
+@media (min-width: 1280px) {
 
+    .register .top {
+        display : flex;
+        flex-direction :row;
+    }
+
+    .dashboard {
+        position: sticky;
+    }
+}
