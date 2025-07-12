@@ -106,10 +106,6 @@ const addNewService = async () => {
         </div>
 
         <div>
-          <h3>createdAt</h3>
-        </div>
-
-        <div>
 
         </div>
       </div>
@@ -121,8 +117,8 @@ const addNewService = async () => {
             <p>{service.name}</p>
             <p>{service.price}</p>
             <p>{new Date(service.updatedAt).toLocaleDateString()}</p>
-            <p>{new Date(service.createdAt).toLocaleDateString()}</p>
-            <button onClick = {()=>{viewMore(service.id)}}><i className="bi bi-three-dots-vertical"></i></button>
+
+            <p><button onClick = {()=>{viewMore(service.id)}}><i className="bi bi-three-dots-vertical"></i></button></p>
           </div>
         ))}
       </div>

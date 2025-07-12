@@ -314,6 +314,7 @@ white-space: nowrap;
 .serviceHeading h2  {
   margin-bottom : 0;
   padding-bottom : 0;
+  font-size : 30px;
 }
 
 .serviceHeading p {
@@ -323,10 +324,11 @@ white-space: nowrap;
 
 
 .serviceFiltering  input{
-   width :400px;
+   width :100%;
    margin-top : 10px;
    height : 40px;
    border-radius : 5px;
+   border : 1px solid grey;
    font-size :16px;
 }
 
@@ -338,8 +340,8 @@ white-space: nowrap;
 
 .serviceFiltering button {
   width :130px;
-  height : 50px;
-  border-radius : 10px;
+  height : 40px;
+  border-radius : 5px;
   border : none;
   background-color: lightcoral;
   color : white;
@@ -349,9 +351,19 @@ white-space: nowrap;
 .servicePlaceholder,.eachServiceComponent {
   background-color: lightcoral;
   margin-top :15px;
+  height :30px;
   display : flex;
+  justify-content: space-between;
   padding-left :5px;
 }
+
+.servicePlaceholder h3 {
+    color : white;
+    margin-right : 10px;
+    overflow-x: auto;
+}
+
+
 
 .addNewService {
   
@@ -420,6 +432,10 @@ white-space: nowrap;
 .eachServiceComponent {
 margin-top:0;
 width : 100%;
+height : 50px;
+display : flex;
+align-items: center;
+justify-content: space-between;
 background-color : snow;
 border-bottom : 1px solid grey;
 
@@ -427,7 +443,6 @@ border-bottom : 1px solid grey;
 
 .eachServiceComponent p {
    min-width: calc(100%/6);
-
 }
 
 .serviceDetail {
@@ -455,8 +470,7 @@ border-bottom : 1px solid grey;
 .eachServiceComponent button {
   background-color: transparent;
   border : none;
-  width : 60px;
-  height :60px;
+
   border-radius : 50%;
 }
 
