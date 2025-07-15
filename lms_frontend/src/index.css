@@ -68,11 +68,9 @@ white-space: nowrap;
 
 .register .head {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
   background-color:rgb(189, 145, 106);
   height: 50px;
-  width :auto;
   overflow-x: auto;
   border-top-left-radius: 15px;
   padding: 0;
@@ -89,31 +87,19 @@ white-space: nowrap;
 }
 
 .register .body {
-    display : flex;
-  flex-direction:row;
-  justify-content: space-evenly;
-  align-items: center;
-
-  padding-top:0;
-  padding-bottom:0;
-  background-color: lightgray;
-
-  background-color : snow;
-  height:100%;
 }
 
 .body button {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 8px 12px;
-  border :none;
+  justify-content: space-evenly;
+ 
   background-color:lightyellow;
   cursor: pointer;
 }
 
 .head h3, .body p {
-  min-width :140px;
+  max-width :160px;
 }
 
 .body  {

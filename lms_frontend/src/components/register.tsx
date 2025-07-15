@@ -117,6 +117,7 @@ function Register() {
           <h3>phone number</h3>
           <h3>date</h3>
           <h3>services</h3>
+          <h3></h3>
         </div>
 
         {patients.map((patient: any, index) => (
@@ -141,6 +142,18 @@ function Register() {
                 "-"
               )}
             </p>
+            <button  onClick = {async ()=> {
+              try {
+                const response = await axios.delete(`http://localhost:5000/register/${patient.id}`)
+
+                if(response.status === 200) {
+                  alert("successfully deleted")
+                  navigate(`/`)
+                }
+              }catch(error) {
+                alert(error)
+              }
+            }}>Delete</button>
             </button>
           </div>
         ))}

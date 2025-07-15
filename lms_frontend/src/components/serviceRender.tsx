@@ -57,11 +57,11 @@ function RenderServiceDetail(props: { serviceId: number }) {
         <div className="heading">
           <div className="navBtn">
           <button className="back" onClick={returnBack}>
-            <i className="bi bi-arrow-left-short">back</i>
+            <i className="bi bi-arrow-left-short"></i>back
           </button>
 
           <button className = "addNewProp">
-            <i className="bi bi-plus">Add new</i>
+            <i className="bi bi-plus"></i>Add new
           </button>
           </div>
           <h2>Service Name: {service ? service.name : "..."}</h2>
@@ -88,8 +88,9 @@ function RenderServiceDetail(props: { serviceId: number }) {
             <div><p>Name</p></div>
             <div><p>Unit</p></div>
             <div><p>Reference Value</p></div>
-            <div><p>Created At</p></div>
+           {/* <div><p>Created At</p></div>
             <div><p>Last Updated</p></div>
+           */}
             <div></div>
           </div>
 
