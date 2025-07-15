@@ -3,99 +3,97 @@
 @tailwind utilities;
 
 body {
-background-color: white;
-
+  background-color: white;
 }
 
 .dashboard {
-  display : flex;
-  position:sticky;
-  top : 0;
-  width : 100%;
+  display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
   justify-content: space-between;
-  padding-top:4%;
+  padding-top: 4%;
   background-color: #3d506e;
-  padding-left : 2%;
-  margin-left : 0;
-
+  padding-left: 2%;
+  margin-left: 0;
 }
 
 .dashboard div {
-  margin-bottom : 20px;
-  display : flex;
-  flex-direction : column;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
 }
 
 .dashboard i {
- margin-right :5px;
- font-size : 30px;
+  margin-right: 5px;
+  font-size: 30px;
 }
 
 .dashboard :hover {
-  color : white;
+  color: white;
 }
 
 .dashLink {
-  color :white;
-  text-decoration : none;
-  font-size : 22px;
-  font-weight :900;
-  display : flex;
+  color: white;
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 900;
+  display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.registerBody, .serviceBody, .serviceDetailBody {
-  display : flex;
-flex-direction : column;
-width :100%;
-overflow-x : hidden;
-
+.registerBody,
+.serviceBody,
+.serviceDetailBody {
+  display: flex;
+  flex-direction: column;
+  max-width: 100%;
+  display: border-box;
+  overflow-x: hidden;
 }
 
 .register .top {
-    display: flex;
-    flex-direction : column;
-    align-items: left;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
 }
 
 .register {
-overflow-x: auto;
-white-space: nowrap;
- margin-left : 2%;
+  overflow-x: auto;
+  white-space: nowrap;
+  margin-left: 2%;
 }
-
 
 .register .head {
   display: flex;
   justify-content: space-between;
-  width :auto;
+  width: auto;
   align-items: center;
-  background-color:rgb(189, 145, 106);
+  background-color: rgb(189, 145, 106);
   height: 50px;
   overflow-x: auto;
   border-top-left-radius: 15px;
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  position:sticky;
-  top :0;
-  left:0;
+  position: sticky;
+  top: 0;
+  left: 0;
 }
 
 .register .head h3 {
   text-align: center;
-  flex : 1;
- 
+  flex: 1;
 }
 
 .pagination button {
-  border :1px solid rgb(189, 145, 106);
-  margin-right : 10px;
-  height :40px;
-  width : 40px;
-  margin-top :20px;
-  border-radius : 50%;
+  border: 1px solid rgb(189, 145, 106);
+  margin-right: 10px;
+  height: 40px;
+  width: 40px;
+  margin-top: 20px;
+  border-radius: 50%;
 }
 
 .pagination button:hover {
@@ -107,482 +105,480 @@ white-space: nowrap;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
- 
-  background-color:lightyellow;
+
+  background-color: lightyellow;
   cursor: pointer;
 }
 .body i {
-  color :red
+  color: red;
 }
-.head h3, .body p {
-  min-width :100px;
-}
-
-.body  {
-  border-bottom:2px solid grey;
+.head h3,
+.body p {
+  min-width: 100px;
 }
 
+.body {
+  border-bottom: 2px solid grey;
+}
 
 .top {
-  display : flex;
-  flex-direction:row;
+  display: flex;
+  flex-direction: row;
   justify-content: space-between;
 }
 
 .top input {
-    height :60px;
-    padding:2%;
-    border :3px solid lightgrey;
-    border-radius : 8px;
-    font-size : 18px;
+  height: 60px;
+  padding: 2%;
+  border: 3px solid lightgrey;
+  border-radius: 8px;
+  font-size: 18px;
 }
 
 .regNav {
-    display : flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .top h4 {
-    color :#0f151f;
-  font-size :27px;
+  color: #0f151f;
+  font-size: 27px;
   line-height: 40px;
-  font-weight :600;
+  font-weight: 600;
 }
 .top button {
-  height : 70px;
-  width : 130px;
-  border-radius : 10px;
+  height: 70px;
+  width: 130px;
+  border-radius: 10px;
 }
 
 .top i {
-  font-size:32px;
+  font-size: 32px;
 }
 
 .top button {
-  display : flex;
+  display: flex;
   align-items: center;
   justify-content: space-evenly;
-  font-size : 25px;
-  color : white;
-  height :50px;
-  padding :10px;
-  font-weight :500;
-  background-color : lightgray;
-  border : none ;
-  background-color : #3d506e;
+  font-size: 25px;
+  color: white;
+  height: 50px;
+  padding: 10px;
+  font-weight: 500;
+  background-color: lightgray;
+  border: none;
+  background-color: #3d506e;
 }
-
-
 
 .addRegister {
-  
-  background-color : white;
-  padding-top:5%;
-  border-radius :30px;
-  width :90%;
-  margin-left : 5%;
-  padding:5%;
-  margin-top : 20px;
+  background-color: white;
+  padding-top: 5%;
+  border-radius: 30px;
+  width: 90%;
+  margin-left: 5%;
+  padding: 5%;
+  margin-top: 20px;
 }
 
-.addRegister .one, .addRegister .two, .addRegister .three {
-    display : flex;
-    flex-direction :column;
+.addRegister .one,
+.addRegister .two,
+.addRegister .three {
+  display: flex;
+  flex-direction: column;
 }
 
-
-
-.addRegister .heading{
-  display : flex;
+.addRegister .heading {
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .ptnDet {
-  color : white;
-  background-color : lightcoral;
-  padding : 10px;
+  color: white;
+  background-color: lightcoral;
+  padding: 10px;
 }
 
-.regInput .one, .regInput .two, .regInput .three {
-  display : flex;
+.regInput .one,
+.regInput .two,
+.regInput .three {
+  display: flex;
   justify-content: space-between;
 }
 
 .regInput {
-  display : flex;
-  flex-direction:  column;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
 .addRegister input {
-  width : 100%;
-  margin-bottom : 40px;
-  border : none;
-  border-bottom : 1px solid grey;
-  height : 30px;
-  font-size : 17px;
+  width: 100%;
+  margin-bottom: 40px;
+  border: none;
+  border-bottom: 1px solid grey;
+  height: 30px;
+  font-size: 17px;
 }
 
 .addRegister input :focus {
-  border : none;
+  border: none;
 }
 
 .submit {
   display: flex;
   justify-content: space-around;
-  margin-top : 30px;
+  margin-top: 30px;
 }
 .submit button {
-  width :100px;
-  height : 50px;
+  width: 100px;
+  height: 50px;
   border-radius: 10px;
   background-color: #3d506e;
-  border : none;
-  color : white;
+  border: none;
+  color: white;
 }
 .submit i {
-  font-size :30px;
+  font-size: 30px;
 }
 
 .services-dropdown {
-  border :1px solid gray;
-  margin-bottom : 5px;
-  display : flex;
-  flex-direction : row;
-  margin-top : 0;
-  padding :0;
+  border: 1px solid gray;
+  margin-bottom: 5px;
+  display: flex;
+  flex-direction: row;
+  margin-top: 0;
+  padding: 0;
 }
 
 .services-dropdown button {
-  margin-right :2px;
+  margin-right: 2px;
 }
 .three button {
-  width : 70px;
-  height :33px;
+  width: 70px;
+  height: 33px;
 }
 
 .three input {
-  width : 330px;
+  width: 330px;
 }
 
 .services {
-  display : flex;
+  display: flex;
   align-items: center;
 }
 
 .services button {
-  height :33px;
-  margin-left :3px;
+  height: 33px;
+  margin-left: 3px;
 }
 
-.services_display  {
-  border : 1px solid grey;
+.services_display {
+  border: 1px solid grey;
   height: 50px;
-  width :330px;
-  display : flex;
+  width: 330px;
+  display: flex;
   align-items: center;
-  padding:5px;
+  padding: 5px;
 }
 
-.registeredService  {
-  border-radius :5px;
-  display : flex;
-  align-items : center;
-  background-color : plum;
-  height : 20px;
-  margin-right : 10px;
-  padding : 2%;
+.registeredService {
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  background-color: plum;
+  height: 20px;
+  margin-right: 10px;
+  padding: 2%;
 }
 .registeredService button {
-    height : 20px;
-    width : 15px;
-    color : red;
-    border : none;
-    font-weight :700;
-    font-size : 17px;
-    margin-right :3px;
-    background-color: transparent;
-    
+  height: 20px;
+  width: 15px;
+  color: red;
+  border: none;
+  font-weight: 700;
+  font-size: 17px;
+  margin-right: 3px;
+  background-color: transparent;
 }
 
 .serviceSection {
- 
-  padding:2%;
-  width : 100%;
+  padding: 2%;
+  width: 100%;
 }
 
-.serviceHeading h2  {
-  margin-bottom : 0;
-  padding-bottom : 0;
-  font-size : 30px;
+.serviceHeading h2 {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  font-size: 30px;
 }
 
 .serviceHeading p {
-  margin-top : 5px;
-  margin-bottom : 0;
+  margin-top: 5px;
+  margin-bottom: 0;
 }
 
-
-.serviceFiltering  input{
-   width :100%;
-   margin-top : 10px;
-   height : 40px;
-   border-radius : 5px;
-   border : 1px solid grey;
-   font-size :16px;
+.serviceFiltering input {
+  width: 100%;
+  margin-top: 10px;
+  height: 40px;
+  border-radius: 5px;
+  border: 1px solid grey;
+  font-size: 16px;
 }
 
 .serviceFiltering {
-  display : flex;
-  align-items : center;
+  display: flex;
+  align-items: center;
   justify-content: space-between;
 }
 
 .serviceFiltering button {
-  width :130px;
-  height : 40px;
-  border-radius : 5px;
-  border : none;
+  width: 130px;
+  height: 40px;
+  border-radius: 5px;
+  border: none;
   background-color: lightcoral;
-  color : white;
-  font-weight : 800;
+  color: white;
+  font-weight: 800;
 }
 
-.servicePlaceholder,.eachServiceComponent {
+.servicePlaceholder,
+.eachServiceComponent {
   background-color: lightcoral;
-  margin-top :15px;
-  height :30px;
-  display : flex;
+  margin-top: 15px;
+  height: 30px;
+  display: flex;
   justify-content: space-between;
-  padding-left :5px;
+  padding-left: 5px;
 }
 
 .servicePlaceholder h3 {
-    color : white;
-    margin-right : 10px;
-    overflow-x: auto;
+  color: white;
+  margin-right: 10px;
+  overflow-x: auto;
 }
 
-
-
 .addNewService {
-  
-  display : flex;
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  padding :3%;
-  width :40%;
-  margin-left:35%;
-  margin-right : 15%;
-
+  padding: 3%;
+  width: 40%;
+  margin-left: 35%;
+  margin-right: 15%;
 }
 
 .newButtons {
-  display : flex;
+  display: flex;
   flex-direction: row;
 }
 
 .newButtons button {
-  margin-right :10px;
+  margin-right: 10px;
 }
 
 .eachInput {
-  display : flex;
-  flex-direction :column;
-  align-items : left; 
-  width : 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  width: 100%;
 }
 
 .eachInput p {
-  font-size :1.2rem;
-  margin-bottom :0;
+  font-size: 1.2rem;
+  margin-bottom: 0;
 }
 
 .eachInput input {
-  width :300px;
-  height :40px;
-  font-size :17px;
-  padding-left :5px;
+  width: 300px;
+  height: 40px;
+  font-size: 17px;
+  padding-left: 5px;
 }
 
 .addNewService button {
-  width :100px;
-  height : 40px;
-  margin-top :30px;
-  margin-bottom : 20px;
-  border-radius : 7px;
-  border : none ;
+  width: 100px;
+  height: 40px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  border: none;
   background-color: lightcoral;
-  color : white;
-  font-weight :800;
+  color: white;
+  font-weight: 800;
 }
 
 .servicePlaceholder div {
-  min-width: calc(100%/6);
-
+  min-width: calc(100% / 6);
 }
 
 .eachServices {
-  display : flex;
+  display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left :5px;
+  padding-left: 5px;
 }
 
 .eachServiceComponent {
-margin-top:0;
-width : 100%;
-height : 50px;
-display : flex;
-align-items: center;
-justify-content: space-between;
-background-color : snow;
-border-bottom : 1px solid grey;
-
+  margin-top: 0;
+  width: 100%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: snow;
+  border-bottom: 1px solid grey;
 }
 
 .eachServiceComponent p {
-   min-width: calc(100%/6);
+  min-width: calc(100% / 6);
 }
 
 .serviceDetail {
- 
-  padding-left :2%;
-  width : 100%;
-  margin-top:4%;
+  padding-left: 2%;
+  width: 100%;
+  margin-top: 4%;
 }
 
 .navBtn {
-  display : flex;
-  align-items: center
+  display: flex;
+  align-items: center;
 }
 
-.serviceDetail .back, .serviceDetail .addNewProp {
-  border-radius : 10px;
-  height :40px;
-  width : 70px;
-  margin-right :10px;
+.serviceDetail .back,
+.serviceDetail .addNewProp {
+  border-radius: 10px;
+  height: 40px;
+  width: 70px;
+  margin-right: 10px;
 }
 
 .serviceDetail .addNewProp {
-  width : 100px;
+  width: 100px;
 }
 .eachServiceComponent button {
   background-color: transparent;
-  border : none;
+  border: none;
 
-  border-radius : 50%;
+  border-radius: 50%;
 }
 
-.eachParamsHeading, .eachParams {
-  display : flex;
-  align-items : center;
-  padding-left :3%;
+.eachParamsHeading,
+.eachParams {
+  display: flex;
+  align-items: center;
+  padding-left: 3%;
+  width: 1000px;
+  background-color: lightcoral;
+  overflow: auto;
 }
 
 .eachParams {
-  background-color :snow;
-  border-bottom : 1px solid grey;
+  background-color: snow;
+  border-bottom: 1px solid grey;
 }
 
-.eachParamsHeading div, .eachParams p {
-  width : calc(100%/6)
+.eachParamsHeading div,
+.eachParams p {
+  width: calc(100% / 6);
 }
 
 .eachParams button {
-  margin-right : 5px;
+  margin-right: 5px;
 }
 
 .editButton i {
-  color : lightcoral
+  color: lightcoral;
 }
-.editButton, .deleteButton {
-  border-radius : 50%;
-  height : 30px;
-  width : 30px;
-  border : 1px solid lightcoral;
+.editButton,
+.deleteButton {
+  border-radius: 50%;
+  height: 30px;
+  width: 30px;
+  border: 1px solid lightcoral;
 }
 
 .deleteButton i {
-  color : red;
+  color: red;
 }
 
 .deleteButton {
-  border : 1px solid red;
+  border: 1px solid red;
 }
 .testParameter {
   
-   background-color :lightcoral;
- 
+  overflow-x:  auto ;
+  white-space:nowrap;
 }
-
 
 .viewRegister .registerServices {
-  border : 1px solid red;
-
+  border: 1px solid red;
 }
 .viewRegister .eachService {
-  border : 1px solid blue;
+  border: 1px solid blue;
 }
 
 .viewRegister .parameterItem {
-  display : flex;
+  display: flex;
   justify-content: space-around;
 }
 
-.resultComponent button{
-  display : flex;
-  width : 100%;
-  align-items : center;
-  justify-content : space-around;
+.resultComponent button {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .eachServiceResult {
-  display : flex;
-  flex-direction :column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
 }
 
 @media (min-width: 1280px) {
+  .register .top {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+  }
 
-    .register .top {
-        margin-top :20px;
-        display : flex;
-        flex-direction :row;
-    }
+  .dashboard {
+    position: sticky;
+  }
 
-    .dashboard {
-        position: sticky;
-    }
+  .regNav button {
+    margin-left: 30px;
+    margin-right: 30px;
+  }
 
-    .regNav button {
-        margin-left :30px;
-        margin-right : 30px;
-    }
+  .top h4 {
+    font-size: 30px;
+  }
 
-    .top h4 {
-        font-size : 30px;
-    }
+  .head h3,
+  .body p {
+    max-width: 160px;
+  }
 
-    .head h3, .body p {
-  max-width :160px;
-}
+  .register .body {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
 
-    .register .body {
-       
-         display : flex;
-         justify-content: space-between;
-         width : 100%;
-    }
+  .register .head {
+    justify-content: start;
+  }
 
-    .register .head {
-      justify-content: start;
-    }
+  .register .body p {
+    width: 179px;
+  }
 
-    .register .body p {
-        width :179px;
-      
-    }
+ .eachParamsHeading,
+.eachParams{
+    width : auto;
+  }
 }

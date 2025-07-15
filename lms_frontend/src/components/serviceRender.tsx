@@ -88,9 +88,9 @@ function RenderServiceDetail(props: { serviceId: number }) {
             <div><p>Name</p></div>
             <div><p>Unit</p></div>
             <div><p>Reference Value</p></div>
-           {/* <div><p>Created At</p></div>
+           <div><p>Created At</p></div>
             <div><p>Last Updated</p></div>
-           */}
+           
             <div></div>
           </div>
 
