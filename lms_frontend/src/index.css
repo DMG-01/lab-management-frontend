@@ -68,6 +68,8 @@ white-space: nowrap;
 
 .register .head {
   display: flex;
+  justify-content: space-between;
+  width :auto;
   align-items: center;
   background-color:rgb(189, 145, 106);
   height: 50px;
@@ -84,10 +86,10 @@ white-space: nowrap;
 .register .head h3 {
   text-align: center;
   flex : 1;
+ 
 }
 
-.register .body {
-}
+
 
 .body button {
   display: flex;
@@ -99,7 +101,7 @@ white-space: nowrap;
 }
 
 .head h3, .body p {
-  max-width :160px;
+  min-width :100px;
 }
 
 .body  {
@@ -550,11 +552,19 @@ border-bottom : 1px solid grey;
         font-size : 30px;
     }
 
+    .head h3, .body p {
+  max-width :160px;
+}
+
     .register .body {
        
          display : flex;
          justify-content: space-between;
          width : 100%;
+    }
+
+    .register .head {
+      justify-content: start;
     }
 
     .register .body p {
