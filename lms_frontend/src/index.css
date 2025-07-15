@@ -89,7 +89,19 @@ white-space: nowrap;
  
 }
 
+.pagination button {
+  border :1px solid rgb(189, 145, 106);
+  margin-right : 10px;
+  height :40px;
+  width : 40px;
+  margin-top :20px;
+  border-radius : 50%;
+}
 
+.pagination button:hover {
+  background-color: rgb(189, 145, 106);
+  color: white;
+}
 
 .body button {
   display: flex;
