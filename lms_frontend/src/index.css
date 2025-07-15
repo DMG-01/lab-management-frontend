@@ -111,7 +111,9 @@ white-space: nowrap;
   background-color:lightyellow;
   cursor: pointer;
 }
-
+.body i {
+  color :red
+}
 .head h3, .body p {
   min-width :100px;
 }

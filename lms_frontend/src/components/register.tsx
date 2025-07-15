@@ -156,7 +156,7 @@ function Register() {
                       }
                     }}
                   >
-                    Delete
+                   <i className="bi bi-trash3-fill"></i>
                   </button>
                 </button>
               </div>
