@@ -13,7 +13,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
   const [newName, setNewName] = useState<string>("")
   const [newValue, setNewValue] = useState<string>(" ")
   const [newReferenceRange, setNewReferenceRange] = useState<string>(" ")
-
+  const [isSettingProp, setIsSettingProp] = useState(false)
   const [parameterId, setParameterId] = useState<number>()
   const [serviceId, setServiceId] =useState<number>()
   
@@ -60,7 +60,9 @@ function RenderServiceDetail(props: { serviceId: number }) {
             <i className="bi bi-arrow-left-short"></i>back
           </button>
 
-          <button className = "addNewProp">
+          <button className = "addNewProp"  onClick = {()=> {
+            setIsSettingProp(true)
+          }}>
             <i className="bi bi-plus"></i>Add new
           </button>
           </div>
@@ -162,6 +164,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
 
       }
 
+  {  isSettingProp &&
       <div className="addNewParameter">
         <div className="eachInput">
            <div>property name*</div>
@@ -213,9 +216,14 @@ function RenderServiceDetail(props: { serviceId: number }) {
             }
             
         }
-      }>ADD</button></div>
+      }>Add</button>
+      <button onClick = {()=> {
+        setIsSettingProp(false)
+      }}>BACK</button></div>
         
       </div>
+
+      }
       </div>
 
       

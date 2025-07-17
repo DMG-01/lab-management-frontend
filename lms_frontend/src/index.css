@@ -62,7 +62,7 @@ body {
 .register {
   overflow-x: auto;
   white-space: nowrap;
-  margin-left: 1%;
+  margin-left: 2%;
 }
 
 .register .head {
@@ -119,7 +119,7 @@ body {
 
 .body {
   border-bottom: 2px solid grey;
-  border :1px solid red
+
 }
 
 .top {
@@ -393,7 +393,8 @@ body {
 }
 
 .eachInput input {
-  width: 300px;
+  width: 100%;
+  border : 1px solid lightcoral;
   height: 40px;
   font-size: 17px;
   padding-left: 5px;
@@ -490,6 +491,21 @@ body {
   margin-right: 5px;
 }
 
+.addNewParameter {
+  
+  width :70%;
+  margin-left : 15%;
+  margin-top : 20px;
+}
+
+
+.addNewParameter button {
+  margin-right : 10px;
+  background-color : lightcoral;
+  color : white;
+  min-width :70px;
+  margin-top : 10px;
+}
 .editButton i {
   color: lightcoral;
 }
