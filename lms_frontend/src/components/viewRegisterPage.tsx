@@ -128,7 +128,7 @@ function ViewRegister() {
         }
       </div>
       <div className="viewRehHeading">
-        <h2>Patient Details</h2>
+        <h2>Patient Details </h2>
         <h3>Name: {registerDetail?.patient?.firstName} {registerDetail?.patient?.lastName}</h3>
         <h3>Phone: {registerDetail?.patient?.phoneNumber}</h3>
         <h3>Email: {registerDetail?.patient?.email}</h3>
@@ -167,7 +167,23 @@ function ViewRegister() {
        
         {registerDetail?.services?.map((eachService: any) => (
           <div key={eachService.id} className="eachService">
-            <h4>Test: {eachService.name}</h4>
+            <h4>Test: {eachService.name}<button className="no_print" onClick = {
+          async()=> {
+            try {
+              const response = await axios.patch(`http://localhost:5000/register/removeService/${registerDetail.id}`, {
+                serviceIdToRemove : eachService.id
+              })
+
+              if(response.status === 200) {
+                alert(`service successfully removed`)
+              }else {
+                alert(`failed with response ${response.status}`)
+              }
+            }catch(error) {
+              alert(error)
+            }
+          }
+        }>remove</button></h4>
             <p>Price: #{eachService.price}</p>
 
             <button className="no_print" onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>
