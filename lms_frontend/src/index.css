@@ -62,7 +62,7 @@ body {
 .register {
   overflow-x: auto;
   white-space: nowrap;
-  margin-left: 2%;
+  margin-left: 1%;
 }
 
 .register .head {
@@ -119,6 +119,7 @@ body {
 
 .body {
   border-bottom: 2px solid grey;
+  border :1px solid red
 }
 
 .top {
