@@ -530,11 +530,19 @@ body {
   white-space:nowrap;
 }
 
-.viewRegister .registerServices {
-  border: 1px solid red;
+.viewRegister button {
+ margin-right : 10px;
 }
-.viewRegister .eachService {
-  border: 1px solid blue;
+ .eachService {
+  border-radius : 15px;
+  width : 90%;
+  margin-left : 5%;
+  box-shadow : 5px 5px 5px lightgrey;
+  margin-bottom : 20px;
+}
+
+.eachService h4 {
+  font-weight :600
 }
 
 .viewRegister .parameterItem {
@@ -553,6 +561,26 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+
+
+.viewRehHeading {
+  
+  background-color : white;
+  margin-top :20px;
+  width :90%;
+  margin-left : 5%;
+  margin-bottom : 20px;
+  border-radius : 10px;
+  padding:5px 15px;
+  box-shadow: 5px 5px 5px lightgrey;
+}
+
+.viewRehHeading h2 {
+  font-weight : 700;
+  font-size : 20px;
+  
 }
 
 @media (min-width: 1280px) {

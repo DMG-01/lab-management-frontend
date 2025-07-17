@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function ViewRegister() {
+  const navigate = useNavigate()
   const { id } = useParams<{ id: string }>();
   const [registerDetail, setRegisterDetail] = useState<any>(null);
   const [result, setResult] = useState<any>();
@@ -11,6 +12,26 @@ function ViewRegister() {
   const [uploadingServiceId, setUploadingServiceId] = useState<number | null>(null);
   const [parameterInputs, setParameterInputs] = useState<any[]>([]);
   const [uploadResultValue, setUploadResultValue] = useState<string|undefined>()
+
+ const handlePrint = () => {
+ 
+  const elementsToHide = document.querySelectorAll('.no_print');
+
+  elementsToHide.forEach(el => {
+    const element = el as HTMLElement; // ✅ Cast to HTMLElement
+    element.setAttribute('data-prev-display', element.style.display);
+    element.style.display = 'none';
+  });
+
+  setTimeout(() => {
+    window.print();
+
+    elementsToHide.forEach(el => {
+      const element = el as HTMLElement;
+      element.style.display = element.getAttribute('data-prev-display') || '';
+    });
+  }, 100);
+};
 
   const getRegisterDetail = async () => {
     try {
@@ -46,7 +67,19 @@ function ViewRegister() {
 
   return (
     <div className="viewRegister">
+      <button className="no_print" onClick = {
+        ()=> {
+          navigate("/")
+        }
+      }>Back</button>
+
+      <button className="no_print" onClick={ 
+        ()=> {
+          handlePrint()
+        }
+      }>Print</button>
       <div className="viewRehHeading">
+        <h2>Patient Details</h2>
         <h3>Name: {registerDetail?.patient?.firstName} {registerDetail?.patient?.lastName}</h3>
         <h3>Phone: {registerDetail?.patient?.phoneNumber}</h3>
         <h3>Email: {registerDetail?.patient?.email}</h3>
@@ -82,13 +115,13 @@ function ViewRegister() {
       </div>
 
       <div className="registerServices">
-        <h3>Services:</h3>
+       
         {registerDetail?.services?.map((eachService: any) => (
           <div key={eachService.id} className="eachService">
             <h4>Test: {eachService.name}</h4>
             <p>Price: #{eachService.price}</p>
 
-            <button onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>
+            <button className="no_print" onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>
               Upload Result
             </button>
 
