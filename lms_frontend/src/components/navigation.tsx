@@ -8,8 +8,8 @@ function Navigation() {
     return(
         <>
         <div className="dashboard">
-            <div><Link to="/" class="dashLink"><i className="bi bi-people-fill"></i></Link></div>
-            <div><Link to="/services" class="dashLink"><i className="bi bi-journal-medical"></i></Link></div> 
+            <div><Link to="/" className="dashLink"><i className="bi bi-people-fill"></i></Link></div>
+            <div><Link to="/services" className="dashLink"><i className="bi bi-journal-medical"></i></Link></div> 
             
         </div>
         </>

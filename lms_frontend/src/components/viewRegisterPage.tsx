@@ -12,6 +12,7 @@ function ViewRegister() {
   const [uploadingServiceId, setUploadingServiceId] = useState<number | null>(null);
   const [parameterInputs, setParameterInputs] = useState<any[]>([]);
   const [uploadResultValue, setUploadResultValue] = useState<string|undefined>()
+ const [services, setServices] = useState<any[]>([]);
 
  const handlePrint = () => {
  
@@ -59,11 +60,28 @@ function ViewRegister() {
     }
   };
 
+  const getServices = async()=> {
+
+    try {
+    const response = await axios.get(`http://localhost:5000/service/`)
+
+    response.status === 200 ?
+    setServices(response.data._AllServices)
+    : 
+    alert(response.status)
+
+    }catch(error) {alert(error)}
+  }
+
   useEffect(() => {
     if (id) {
       getRegisterDetail();
     }
   }, [id]);
+  
+  useEffect(()=> {
+    getServices()
+  }, [])
 
   return (
     <div className="viewRegister">
@@ -78,6 +96,37 @@ function ViewRegister() {
           handlePrint()
         }
       }>Print</button>
+
+      <div className="services">
+        {
+         services.map((service, index) => (
+          <div className="_services">
+  <p key={index}>{service.name}</p>
+  <button
+  onClick = {
+    async ()=> {
+
+      try {
+        alert(`${service.id}`)
+        const response = await axios.patch(`http://localhost:5000/register/addService/${registerDetail.id}`, {
+           serviceIdToAdd : service.id
+        } )
+
+        if(response.status === 200 ) {
+          alert(`service added succesffully `)
+        }else {
+          alert(`failed with response ${response.status}`)
+        }
+
+      }catch(error) {
+        alert(error)
+      }
+    }
+  }>add</button>
+  </div>
+))
+        }
+      </div>
       <div className="viewRehHeading">
         <h2>Patient Details</h2>
         <h3>Name: {registerDetail?.patient?.firstName} {registerDetail?.patient?.lastName}</h3>
