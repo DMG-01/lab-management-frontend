@@ -101,8 +101,8 @@ function ViewRegister() {
         {
          services.map((service, index) => (
           <div className="_services">
-  <p key={index}>{service.name}</p>
-  <button
+  <p  className="no_print" key={index}>{service.name}</p>
+  <button className="no_print"
   onClick = {
     async ()=> {
 
@@ -183,7 +183,7 @@ function ViewRegister() {
               alert(error)
             }
           }
-        }>remove</button></h4>
+        }><i className="bi bi-x-square-fill"></i></button></h4>
             <p>Price: #{eachService.price}</p>
 
             <button className="no_print" onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>

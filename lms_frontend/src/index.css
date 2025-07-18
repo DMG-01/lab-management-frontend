@@ -541,6 +541,12 @@ body {
   margin-bottom : 20px;
 }
 
+.eachService i {
+  color : red;
+  font-weight :900;
+  margin-left :10px
+}
+
 .eachService h4 {
   font-weight :600
 }
