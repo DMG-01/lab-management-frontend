@@ -588,6 +588,20 @@ body {
   font-size : 20px;
   
 }
+th, tr, td {
+  border : 1px solid red;
+}
+
+.patientBody {
+  width : 100%;
+  border : 1px solid red;
+}
+.table {
+ overflow: auto;
+ white-space: no-wrap;
+ width : 100%;
+}
+
 
 @media (min-width: 1280px) {
   .register .top {

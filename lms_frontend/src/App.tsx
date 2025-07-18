@@ -7,7 +7,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import Navigation from "./components/navigation"
 import Register from "./components/register"
 import Services from "./components/services"
-import {RenderServiceDetailWrapper, RenderViewRegisterWrapper} from './components/serviceRenderWrapper';
+import Patient from "./components/patient"
+import {RenderServiceDetailWrapper, RenderViewRegisterWrapper, RenderPatientDetailWrapper} from './components/serviceRenderWrapper';
 
 function App() {
 
@@ -18,8 +19,10 @@ function App() {
      <Route path="/" element = {<Register/>}/> 
      <Route path= "/navigation" element = {<Navigation/>}/>
      <Route path= "/services" element = {<Services/>}/>
+     <Route path= "/patient" element = {<Patient/>}/>
 <Route path="/services/:id" element={<RenderServiceDetailWrapper />} />
 <Route path="/viewRegisterPage/:id" element={<RenderViewRegisterWrapper/>} />
+<Route path="/viewPatientDetail/:id" element={<RenderPatientDetailWrapper/>} />
 
       </Routes>
     </Router>

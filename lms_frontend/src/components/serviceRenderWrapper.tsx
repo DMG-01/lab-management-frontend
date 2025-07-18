@@ -2,6 +2,9 @@
 import { useParams } from "react-router-dom";
 import RenderServiceDetail from "./serviceRender";
 import ViewRegister from "./viewRegisterPage";
+import Patient from "./patient";
+
+import PatientDetail from "./viewPatientDetails"
 
 function RenderServiceDetailWrapper() {
   const { id } = useParams<{ id: string }>();
@@ -14,4 +17,10 @@ function RenderViewRegisterWrapper() {
   return <ViewRegister id={Number(id)} />
 }
 
-export {RenderServiceDetailWrapper, RenderViewRegisterWrapper}
+function RenderPatientDetailWrapper() {
+  const {id} = useParams<{id : string}>()
+  return <PatientDetail patientId={Number(id)} />
+
+}
+
+export {RenderServiceDetailWrapper, RenderPatientDetailWrapper, RenderViewRegisterWrapper}
