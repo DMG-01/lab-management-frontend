@@ -1,6 +1,10 @@
 import {useState, useEffect} from "react"
 import axios from "axios"
 
+
+const  referralDetailOnclick =()=> {
+    alert(`clicked`)
+}
 function Referral() {
 const [referral, setReferral]= useState<any[]>([])
 
@@ -10,7 +14,7 @@ const returnAllReferral = async()=> {
         const response = await axios.get(`http://localhost:5000/referrals`)
         if(response.status === 200) {
                 setReferral(response.data.allReferral)
-                alert(`set`)
+                
         }else {
             alert(response.status)
         }
@@ -39,8 +43,8 @@ useEffect(()=> {
                     {referral.map((_referral : any, index : number)=> (
                         <tr
                         key = {index}
-                          style={{cursor : "pointer"}}>
-
+                          style={{cursor : "pointer"}}
+                            onClick = {()=> referralDetailOnclick()}>
                             <td>{index + 1}</td>
                             <td>{_referral.name}</td>
                             <td>{_referral.accountNumber}</td>
