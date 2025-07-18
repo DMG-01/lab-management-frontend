@@ -1,6 +1,8 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
+    const navigate = useNavigate()
   const [patientDetail, setPatientDetail] = React.useState<any>(null);
 
   React.useEffect(() => {
@@ -21,6 +23,11 @@ const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
 
   return (
     <>
+    <div><button onClick= {
+        ()=> {
+            navigate("/patient")
+        }
+    }>Back</button></div>
     <div className="RenderPatientDetail">
       <h3>First Name: {patientDetail.firstName}</h3>
       <h3>Last Name: {patientDetail.lastName}</h3>
