@@ -1,21 +1,65 @@
-import type Patient from "./patient";
-import {useState, useEffect} from "react"
+import React from "react";
 
+const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
+  const [patientDetail, setPatientDetail] = React.useState<any>(null);
 
-function PatientDetail (props : {patientId : number}) {
-    const [patientDetail, setPatientDetail] = useState<any[]>()
+  React.useEffect(() => {
+    const fetchDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/staff/patientHistory/${patientId}`);
+        const data = await response.json();
+        setPatientDetail(data.patientDetail);
+      } catch (error) {
+        alert("Error fetching patient detail");
+      }
+    };
 
-    
-  return(
+    fetchDetails();
+  }, [patientId]);
+
+  if (!patientDetail) return <div>Loading patient details...</div>;
+
+  return (
+    <>
     <div className="RenderPatientDetail">
+      <h3>First Name: {patientDetail.firstName}</h3>
+      <h3>Last Name: {patientDetail.lastName}</h3>
+      <h3>Phone Number : {patientDetail.phoneNumber}</h3>
+      <h3>Email : {patientDetail.email}</h3>
+      <h3>dateOfBirth : {patientDetail.dateOfBirth}</h3>
+    </div>
 
-        <div className="patientDetail">
-            <div><h3>First Name : {}</h3></div>
-        </div>
+    <div className="registerVisit">
+        {patientDetail.tests.map((testVisit : any, index : number)=> (
+            <div className="eachVisit" key={index}>
+                <p>Status : {testVisit.status}</p>
+                <p>Amount paid : {testVisit.amountPaid}</p>
+                <p>Date : {testVisit.dateTaken}</p>
+                <p>Referral : {testVisit.referralId}</p>
 
-        </div>
+                <div className="testVisitServices">
+                    {testVisit.services.map((testVisit : any, index : number)=> (
+                        <div className="eachTestVisitServices" key ={index}>
+                            <p>Name : {testVisit.name} </p>
+                            <p>Price :{testVisit.price}</p>
+                            <div className="testVistServiceResult">
+                                {testVisit.testResult.map((result : any, index : number)=> (
+                                    <div className="eachResult" key = {index}>
+                                        <p>value : {result.value}</p>
+                                        <p>Parameter : {result.parameter.name}</p>
+                                        <p>Unit : {result.parameter.unit}</p>
+                                        <p>Reference Value : {result.parameter.referenceValue}</p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ))}
+    </div>
+    </>
+  );
+};
 
-  )
-}
-
-export default PatientDetail
+export default PatientDetail;
