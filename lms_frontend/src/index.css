@@ -589,17 +589,62 @@ body {
   
 }
 th, tr, td {
-  border : 1px solid red;
+  border : 1px solid lightblue;
+  text-align: center;
 }
 
 .patientBody {
   width : 100%;
-  border : 1px solid red;
+  border : 1px solid lightblue;
 }
 .table {
  overflow: auto;
  white-space: no-wrap;
  width : 100%;
+}
+
+.patientBody button{
+  color : white;
+  background-color :lightblue;
+  padding : 5px;
+  margin-top : 10px;
+  border-radius : 5px;
+  margin-left : 2%;
+}
+
+.patientOverview h2{
+  margin-left : 2%; 
+}
+
+.patientOverview {
+   border : 1px solid grey;
+   
+}
+.overviewDisplay  {
+  margin-left : 2%;
+  display : flex;
+  justify-content: start;
+}
+
+.overViewCard {
+  border : 1px solid grey;
+  display : flex;
+  flex-direction : column;
+  padding : 4px;
+  margin-right: 4px;
+}
+
+.overViewCard h2 {
+  font-size : 27px;
+  font-weight : 600;
+}
+
+th {
+  min-width : 100px;
+  padding : 4px;
+  text-align: center;
+  height : 30px;
+  color : rgb(32, 32, 43);
 }
 
 

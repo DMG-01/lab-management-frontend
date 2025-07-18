@@ -1,6 +1,6 @@
 import axios from "axios";
 import Navigation from "./navigation"
-import {Link, useNavigate} from "react-router-dom"
+import {useNavigate} from "react-router-dom"
 import { useState, useEffect } from "react";
 
 function Patient() {
@@ -33,13 +33,19 @@ function Patient() {
     <div className="patientBody">
         <Navigation/>
       <div>
-        <button>
+        <button className="back_btn">
           <i className="bi bi-arrow-left"></i> back
         </button>
 
         <div className="patientOverview" >
             <div><h2>Patient Overview</h2></div>
             <div className="overviewDisplay">
+                <div className="overViewCard">
+                    <h2>{patient.length}</h2>
+                    <p>No of Patients</p>
+                </div>
+
+
                 <div className="overViewCard">
                     <h2>{patient.length}</h2>
                     <p>No of Patients</p>
