@@ -647,6 +647,57 @@ th {
   color : rgb(32, 32, 43);
 }
 
+.patientDeatilRender {
+  background-color: snow;
+}
+.RenderPatientDetail {
+  background-color: white;
+  box-shadow: 5px 5px 5px lightgray;
+  width : 80%;
+  margin-left : 10%;
+  padding : 2%;
+  border-radius: 10px;
+  margin-bottom : 30px;
+}
+
+.registerVisit {
+  box-shadow: 5px 5px 5px lightgray;
+  width : 80%;
+  margin-left : 10%;
+  padding : 2%;
+  border-radius : 2%;
+}
+
+.eachVisit {
+  margin-top : 15px;
+  border : 1px solid grey;
+  padding : 2%;
+}
+.testVisitHead p {
+  font-weight : 500;
+ 
+}
+
+.testVisitServices {
+ 
+}
+
+.eachTestVisitServices {
+  border : 1px solid black;
+  padding : 2%;
+  margin-bottom : 10px;
+}
+
+.testVistServiceResult {
+ 
+}
+
+.eachResult {
+
+  display : flex;
+  justify-content: space-between;
+  overflow: auto;
+}
 
 @media (min-width: 1280px) {
   .register .top {

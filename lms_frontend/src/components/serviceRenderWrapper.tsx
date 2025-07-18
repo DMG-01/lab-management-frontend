@@ -2,7 +2,7 @@
 import { useParams } from "react-router-dom";
 import RenderServiceDetail from "./serviceRender";
 import ViewRegister from "./viewRegisterPage";
-import Patient from "./patient";
+
 
 import PatientDetail from "./viewPatientDetails"
 

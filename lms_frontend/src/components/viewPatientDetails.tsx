@@ -22,7 +22,7 @@ const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
   if (!patientDetail) return <div>Loading patient details...</div>;
 
   return (
-    <>
+    <div className="patientDeatilRender">
     <div><button onClick= {
         ()=> {
             navigate("/patient")
@@ -39,22 +39,24 @@ const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
     <div className="registerVisit">
         {patientDetail.tests.map((testVisit : any, index : number)=> (
             <div className="eachVisit" key={index}>
+                <div className="testVisitHead">
                 <p>Status : {testVisit.status}</p>
                 <p>Amount paid : {testVisit.amountPaid}</p>
                 <p>Date : {testVisit.dateTaken}</p>
                 <p>Referral : {testVisit.referralId}</p>
+                </div>
 
                 <div className="testVisitServices">
                     {testVisit.services.map((testVisit : any, index : number)=> (
                         <div className="eachTestVisitServices" key ={index}>
-                            <p>Name : {testVisit.name} </p>
+                            <p>Test : {testVisit.name} </p>
                             <p>Price :{testVisit.price}</p>
+                            <p>Parameters :</p>
                             <div className="testVistServiceResult">
                                 {testVisit.testResult.map((result : any, index : number)=> (
                                     <div className="eachResult" key = {index}>
                                         <p>value : {result.value}</p>
-                                        <p>Parameter : {result.parameter.name}</p>
-                                        <p>Unit : {result.parameter.unit}</p>
+                                        <p>Parameter : {`${result.parameter.name}(${result.parameter.unit})`}</p>
                                         <p>Reference Value : {result.parameter.referenceValue}</p>
                                     </div>
                                 ))}
@@ -65,7 +67,7 @@ const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
             </div>
         ))}
     </div>
-    </>
+    </div>
   );
 };
 
