@@ -742,4 +742,22 @@ th {
 .eachParams{
     width : auto;
   }
+  .table {
+    
+    display : flex;
+    align-items: center;
+    justify-content: center;
+  }
+  thead, tr {
+    width : 100%;
+  }
+
+  th, td {
+    padding-left: 30px;
+    padding-bottom : 10px;
+    padding-top : 10px;
+    padding-right :30px;
+  }
+
+
 }

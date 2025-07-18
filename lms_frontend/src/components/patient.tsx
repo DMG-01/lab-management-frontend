@@ -60,6 +60,7 @@ function Patient() {
         <table border={1}>
           <thead>
             <tr>
+                <th>S/n</th>
               <th>FirstName</th>
               <th>LastName</th>
               <th>Phone Number</th>
@@ -74,7 +75,7 @@ function Patient() {
                 key={index}
                 onClick={() => handleRowClick(_patient)}
                 style={{ cursor: "pointer" }} // make it look clickable
-              >
+              > <td>{index + 1}</td>
                 <td>{_patient.firstName}</td>
                 <td>{_patient.lastName}</td>
                 <td>{_patient.phoneNumber}</td>
