@@ -1,6 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-
+import axios from 'axios'
 const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
     const navigate = useNavigate()
   const [patientDetail, setPatientDetail] = React.useState<any>(null);
@@ -8,8 +8,10 @@ const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
   React.useEffect(() => {
     const fetchDetails = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/staff/patientHistory/${patientId}`);
-        const data = await response.json();
+        const response = await axios.get(`http://localhost:5000/staff/patientHistory/${patientId}`, 
+          {withCredentials : true}
+        );
+        const data = await response.data;
         setPatientDetail(data.patientDetail);
       } catch (error) {
         alert("Error fetching patient detail");

@@ -24,7 +24,9 @@ function Services() {
   }
   const getServices = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/service/");
+      const response = await axios.get("http://localhost:5000/service/", {
+        withCredentials : true
+      });
       console.log(response.status);
       setServices(response.data._AllServices);
     } catch (error) {
@@ -40,6 +42,8 @@ const addNewService = async () => {
       const response = await axios.post("http://localhost:5000/service", {
         name: newServiceName,
         price: Number(newServicePrice), // ✅ FIXED LINE
+      }, {
+        withCredentials : true 
       });
 
       alert(response.status);

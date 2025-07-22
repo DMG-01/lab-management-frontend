@@ -36,7 +36,9 @@ function ViewRegister() {
 
   const getRegisterDetail = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/register/${id}`);
+      const response = await axios.get(`http://localhost:5000/register/${id}`, 
+        {withCredentials : true}
+      );
       if (response.status === 200) {
         setRegisterDetail(response.data.register);
       } else {
@@ -50,7 +52,9 @@ function ViewRegister() {
 
   const uploadResult = async (serviceTemplateId: number, serviceId: number) => {
     try {
-      const response = await axios.get(`http://localhost:5000/service/${serviceTemplateId}`);
+      const response = await axios.get(`http://localhost:5000/service/${serviceTemplateId}`, {
+        withCredentials : true
+      });
       if (response.status === 200) {
         setUploadingServiceId(serviceId);
         setParameterInputs(response.data._service.testParameters);
@@ -63,7 +67,9 @@ function ViewRegister() {
   const getServices = async()=> {
 
     try {
-    const response = await axios.get(`http://localhost:5000/service/`)
+    const response = await axios.get(`http://localhost:5000/service/`, {
+      withCredentials : true
+    })
 
     response.status === 200 ?
     setServices(response.data._AllServices)
@@ -110,7 +116,9 @@ function ViewRegister() {
         alert(`${service.id}`)
         const response = await axios.patch(`http://localhost:5000/register/addService/${registerDetail.id}`, {
            serviceIdToAdd : service.id
-        } )
+        } , {
+          withCredentials : true
+        })
 
         if(response.status === 200 ) {
           alert(`service added succesffully `)
@@ -146,7 +154,8 @@ function ViewRegister() {
                     serviceId: result.serviceId,
                     resultId: result.id,
                     newValue: resultValue,
-                  });
+                  }, 
+                {withCredentials : true});
                   if (response.status === 200) {
                     alert("Result changed successfully");
                     setIsEditing(false);
@@ -172,6 +181,8 @@ function ViewRegister() {
             try {
               const response = await axios.patch(`http://localhost:5000/register/removeService/${registerDetail.id}`, {
                 serviceIdToRemove : eachService.id
+              }, {
+                withCredentials : true
               })
 
               if(response.status === 200) {
@@ -213,6 +224,8 @@ function ViewRegister() {
                         serviceId : eachService.id, 
                         parameterTemplateId : param.id, 
                         result : uploadResultValue
+                      }, {
+                        withCredentials : true
                       })
 
                       if(response.status === 200) {

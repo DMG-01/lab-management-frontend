@@ -19,7 +19,9 @@ function RenderServiceDetail(props: { serviceId: number }) {
   
   const getServiceDetails = async (serviceId: number) => {
     try {
-      const response = await axios.get(`http://localhost:5000/service/${serviceId}`);
+      const response = await axios.get(`http://localhost:5000/service/${serviceId}`, {
+        withCredentials : true
+      });
       console.log(response.status);
       setService(response.data._service); // assumes _service is a single object
     } catch (error) {
@@ -120,7 +122,11 @@ function RenderServiceDetail(props: { serviceId: number }) {
                   try {
                     alert(`paramter id : ${parameter.id}`)
                     alert(`parameter service id : ${parameter.serviceTemplateId}`)
-                  const response = await axios.delete(`http://localhost:5000/service/${parameter.serviceTemplateId}/removeproperty/${parameter.id}`)
+                  const response = await axios.delete(`http://localhost:5000/service/${parameter.serviceTemplateId}/removeproperty/${parameter.id}`, 
+                    {
+                      withCredentials : true 
+                    }
+                  )
                   if(response.status == 200) {
                     alert("successfully deleted")
                     window.location.reload()
@@ -152,7 +158,8 @@ function RenderServiceDetail(props: { serviceId: number }) {
             name,
             unit,
             referenceValue
-          })
+          }, 
+        {withCredentials : true})
          if(response.status === 200) {
           alert(`parameters changed successful`)
           getServiceDetails(serviceId!)
@@ -201,6 +208,8 @@ function RenderServiceDetail(props: { serviceId: number }) {
               "serviceId" : service.id, 
               "propertyUnit" : newValue, 
               "referenceValue" : newReferenceRange
+            }, {
+              withCredentials : true
             })
 
             if(response.status == 200) {
