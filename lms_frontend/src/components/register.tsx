@@ -27,7 +27,8 @@ function Register() {
   const getRegister = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/register?page=${page}&limit=${limit}`
+        `http://localhost:5000/register?page=${page}&limit=${limit}` ,
+        {withCredentials : true}
       );
       setPatients(response.data.data);
       setTotalPages(response.data.pagination.totalPages);
@@ -39,7 +40,9 @@ function Register() {
   // 🔵 Fetch available services
   const getAvailableServices = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/service");
+      const response = await axios.get("http://localhost:5000/service", 
+        {withCredentials : true}
+      );
       setServices(response.data._AllServices);
     } catch (error) {
       console.log(error);
@@ -74,7 +77,9 @@ function Register() {
           amountPaid,
         },
         selectedTemplateIds: serviceTemplatesIds,
-      });
+  }, {
+          withCredentials : true,
+  });
       isRegisteringPatient(false);
       alert("Submitted!");
     } catch (error) {
@@ -145,7 +150,9 @@ function Register() {
                       e.stopPropagation();
                       try {
                         const response = await axios.delete(
-                          `http://localhost:5000/register/${patient.id}`
+                          `http://localhost:5000/register/${patient.id}`, {
+                            withCredentials : true
+                          }
                         );
                         if (response.status === 200) {
                           alert("successfully deleted");
