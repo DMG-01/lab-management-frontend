@@ -9,6 +9,7 @@ import Register from "./components/register"
 import Services from "./components/services"
 import Patient from "./components/patient"
 import Referral from "./components/referral"
+import LoginSignUp from './components/loginSignUp';
 import {RenderServiceDetailWrapper, RenderViewRegisterWrapper, RenderPatientDetailWrapper} from './components/serviceRenderWrapper';
 
 function App() {
@@ -17,7 +18,8 @@ function App() {
   return (
     <Router>
       <Routes>
-     <Route path="/" element = {<Register/>}/> 
+        <Route path="/" element = {<LoginSignUp/>}></Route>
+     <Route path="/dashboard" element = {<Register/>}/> 
      <Route path= "/navigation" element = {<Navigation/>}/>
      <Route path= "/services" element = {<Services/>}/>
      <Route path= "/patient" element = {<Patient/>}/>

@@ -699,6 +699,35 @@ th {
   overflow: auto;
 }
 
+
+.loginSignUp {
+  display : flex; 
+  flex-direction : column;
+  justify-content: center;
+  margin-top: 30%;
+  padding-top :15%;
+  padding-left :3%;
+  align-items: start;
+  border : 1px solid red;
+  width : 70%;
+  margin-left : 15%;
+}
+
+.loginSignUp .eachInput input {
+  width : 96%;
+}
+
+.loginSignUp .eachInput {
+  margin-bottom : 35px;
+}
+
+.loginSignUp button {
+
+  border : 1px solid black ;
+  color : red;
+  width : 70px;
+  margin-top : 30px;
+}
 @media (min-width: 1280px) {
   .register .top {
     margin-top: 20px;
