@@ -6,6 +6,7 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 
 function Register() {
   const navigate = useNavigate();
+  const [reload, setReload]= useState(false)
   const [patients, setPatients] = useState([]);
   const [registeringPatient, isRegisteringPatient] = useState(false);
   const [services, setServices] = useState([]);
@@ -80,8 +81,8 @@ function Register() {
   }, {
           withCredentials : true,
   });
+  setReload(prev => !prev)
       isRegisteringPatient(false);
-      alert("Submitted!");
     } catch (error) {
       console.error("Error submitting:", error);
     }
@@ -89,7 +90,7 @@ function Register() {
 
   useEffect(() => {
     getRegister();
-  }, [page]);
+  }, [page, reload]);
 
   return (
     <div className="registerBody">
