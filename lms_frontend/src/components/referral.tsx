@@ -11,7 +11,9 @@ const [referral, setReferral]= useState<any[]>([])
 const returnAllReferral = async()=> {
 
     try {
-        const response = await axios.get(`http://localhost:5000/referrals`)
+        const response = await axios.get(`http://localhost:5000/referrals`, 
+            {withCredentials: true}
+        )
         if(response.status === 200) {
                 setReferral(response.data.allReferral)
                 

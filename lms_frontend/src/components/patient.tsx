@@ -9,7 +9,9 @@ function Patient() {
 
   const allPatient = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/staff/patientHistory`);
+      const response = await axios.get(`http://localhost:5000/staff/patientHistory`, 
+        {withCredentials : true}
+      );
       if (response.status === 200) {
         setPatientDetails(response.data._patientHistory);
       } else {
