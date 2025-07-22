@@ -40,7 +40,6 @@ function LoginSignUp() {
                     message : ` login Successful, redirecting...`, 
                     color : `#111827`
                 })
-                alert(`redirecting`)
                 navigate("/dashboard")
             }
 
@@ -65,8 +64,9 @@ function LoginSignUp() {
         }
     }
     return(
+        <div className="loginSection">
         <div className="loginSignUp">
-            
+            <h1>Log In</h1>
                <div className="eachInput">
                 <label htmlFor="">Phone Number</label>
                 <input type="text" value = {phoneNumber} onChange = {(e)=> {setPhoneNumber(e.target.value)}} placeholder="+234*********" /> 
@@ -79,6 +79,7 @@ function LoginSignUp() {
             <div><button onClick={()=> {
                 login(phoneNumber, password)
             }}>Log In</button></div>
+        </div>
         </div>
     )
 

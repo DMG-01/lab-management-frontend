@@ -708,9 +708,27 @@ th {
   padding-top :15%;
   padding-left :3%;
   align-items: start;
-  border : 1px solid red;
+
   width : 70%;
-  margin-left : 15%;
+  color : 	#111827
+}
+
+.loginSignUp h1 {
+  font-size : 42px;
+text-align: center;
+color : 	#111827;
+font-weight : 500;
+}
+
+.loginSection {
+
+  display : flex;
+  flex-direction : row;
+  justify-content:  center;
+  align-items : center;
+}
+.loginSignUp input {
+  border : 1px solid grey ;
 }
 
 .loginSignUp .eachInput input {
@@ -723,8 +741,9 @@ th {
 
 .loginSignUp button {
 
-  border : 1px solid black ;
-  color : red;
+  border : none;
+  color : white;
+  background-color : 	#111827;
   width : 70px;
   margin-top : 30px;
 }
@@ -786,6 +805,14 @@ th {
     padding-bottom : 10px;
     padding-top : 10px;
     padding-right :30px;
+  }
+  .loginSignUp {
+    margin-top : 0;
+  }
+
+  .loginSignUp button {
+    width : 90px;
+    height : 40px;
   }
 
 
