@@ -19,6 +19,14 @@ function Register() {
   const [patientServices, setPatientServices] = useState<string[]>([]);
   const [serviceTemplatesIds, setServiceTemplateIds] = useState<number[]>([]);
 
+  // filtering state 
+  const [filterFirstName, setFilterFirstName] = useState<string>("")
+  const [filterLastName, setFilterLastName] = useState<string>("")
+  const [filterStartDate, setFilterStartDate] = useState("")
+  const [filterEndDate, setFilterEndDate] =  useState("")
+  const [labNumber, setLabNumber] = useState("")
+
+
   // 🔢 Pagination State
   const [page, setPage] = useState(1);
   const [limit] = useState(20);
@@ -26,10 +34,20 @@ function Register() {
 
   // 🟡 Fetch registered patients (paginated)
   const getRegister = async () => {
+
+    const queryParams : any  = {}
+    if(filterEndDate) queryParams.date = filterEndDate
+    if(filterFirstName) queryParams.firstName = filterFirstName
+        if(filterLastName) queryParams.lastName = filterLastName
+        if(filterStartDate)  queryParams.dateTaken = filterStartDate
+        if(labNumber) queryParams.labNumber  = labNumber
     try {
       const response = await axios.get(
-        `http://localhost:5000/register?page=${page}&limit=${limit}` ,
-        {withCredentials : true}
+        `http://localhost:5000/register` ,
+        {params : {page, 
+          limit, 
+          ...queryParams}, 
+        withCredentials : true}
       );
       setPatients(response.data.data);
       setTotalPages(response.data.pagination.totalPages);
@@ -90,7 +108,7 @@ function Register() {
 
   useEffect(() => {
     getRegister();
-  }, [page, reload]);
+  }, [page, reload, filterFirstName, filterEndDate, filterLastName, filterStartDate, labNumber]);
 
   return (
     <div className="registerBody">
@@ -101,14 +119,21 @@ function Register() {
             <h4>G.G able medical laboratory</h4>
           </div>
           <div className="regNav">
-            <input type="text" placeholder="🔍 Search" />
+           
+
             <button onClick={() => isRegisteringPatient(true)}>
               Register <i className="bi bi-chevron-right"></i>
             </button>
           </div>
         </div>
 
-        <div className="sectionName">REGISTER</div>
+        <div className="registerFiltering">
+           <input type="text" placeholder="🔍 firstName" value = {filterFirstName}  onChange={(e)=> {setFilterFirstName(e.target.value)}} />
+           <input type="text" placeholder="🔍 lastName"  value = {filterLastName} onChange = {(e)=> {setFilterLastName(e.target.value)}} />
+           <input type="date"  value = {filterStartDate} onChange={(e)=> {setFilterStartDate(e.target.value)}}/> ---
+           <input type="date" value = {filterEndDate} onChange={(e)=> {setFilterEndDate(e.target.value)}}/>
+           <input type="text" placeholder="labNumber" value={labNumber} onChange={(e)=> {setLabNumber(e.target.value)}} />
+        </div>
 
         {!registeringPatient && (
           <div className="register">
