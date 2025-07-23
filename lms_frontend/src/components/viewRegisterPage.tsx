@@ -213,8 +213,8 @@ function ViewRegister() {
                 withCredentials : true
               })
 
+              setModifyRegisterDetail((prev)=>!prev)
               if(response.status === 200) {
-                alert(`service successfully removed`)
               }else {
                 alert(`failed with response ${response.status}`)
               }
