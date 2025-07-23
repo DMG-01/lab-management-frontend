@@ -135,93 +135,102 @@ function Register() {
            <input type="text" placeholder="labNumber" value={labNumber} onChange={(e)=> {setLabNumber(e.target.value)}} />
         </div>
 
-        {!registeringPatient && (
-          <div className="register">
-            <div className="head">
-              <h3>lab number</h3>
-              <h3>first name</h3>
-              <h3>last name</h3>
-              <h3>status</h3>
-              <h3>amount paid</h3>
-              <h3>phone number</h3>
-              <h3>date</h3>
-              <h3>services</h3>
-              <h3></h3>
-            </div>
+       {!registeringPatient && (
+  <div className="register">
+    <table className="register-table">
+      <thead className="head">
+        <tr>
+          <th>lab number</th>
+          <th>first name</th>
+          <th>last name</th>
+          <th>status</th>
+          <th>amount paid</th>
+          <th>phone number</th>
+          <th>date</th>
+          <th>services</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody className="body">
+        {patients.map((patient: any, index) => (
+          <tr
+            key={index}
+            onClick={() => navigate(`/viewRegisterPage/${patient.id}`)}
+            style={{ cursor: "pointer" }}
+          >
+            <td>{index + 1 + (page - 1) * limit}</td>
+            <td>{patient.patient?.firstName || "-"}</td>
+            <td>{patient.patient?.lastName || "-"}</td>
+            <td>{patient.status}</td>
+            <td>{`#${patient.amountPaid}`}</td>
+            <td>{patient.patient?.phoneNumber || "-"}</td>
+            <td>{patient.dateTaken}</td>
+            <td>
+              {patient.services && patient.services.length > 0 ? (
+                patient.services.map((service: any, i: number) => (
+                  <span key={i}>
+                    {service.name}
+                    {i < patient.services.length - 1 ? ", " : ""}
+                  </span>
+                ))
+              ) : (
+                "-"
+              )}
+            </td>
+            <td>
+              <button
+                onClick={async (e) => {
+                  e.stopPropagation();
+                  try {
+                    const response = await axios.delete(
+                      `http://localhost:5000/register/${patient.id}`,
+                      { withCredentials: true }
+                    );
+                    if (response.status === 200) {
+                      alert("successfully deleted");
+                      getRegister(); // refresh data
+                    }
+                  } catch (error) {
+                    alert("Delete failed");
+                  }
+                }}
+              >
+                <i className="bi bi-trash3-fill"></i>
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
 
-            {patients.map((patient: any, index) => (
-              <div className="body" key={index}>
-                <button onClick={() => navigate(`/viewRegisterPage/${patient.id}`)}>
-                  <p>{index + 1 + (page - 1) * limit}</p>
-                  <p>{patient.patient?.firstName || "-"}</p>
-                  <p>{patient.patient?.lastName || "-"}</p>
-                  <p>{patient.status}</p>
-                  <p>{`#${patient.amountPaid}`}</p>
-                  <p>{patient.patient?.phoneNumber || "-"}</p>
-                  <p>{patient.dateTaken}</p>
-                  <p>
-                    {patient.services && patient.services.length > 0 ? (
-                      patient.services.map((service: any, i: number) => (
-                        <span key={i}>
-                          {service.name}
-                          {i < patient.services.length - 1 ? ", " : ""}
-                        </span>
-                      ))
-                    ) : (
-                      "-"
-                    )}
-                  </p>
-                  <button
-                    onClick={async (e) => {
-                      e.stopPropagation();
-                      try {
-                        const response = await axios.delete(
-                          `http://localhost:5000/register/${patient.id}`, {
-                            withCredentials : true
-                          }
-                        );
-                        if (response.status === 200) {
-                          alert("successfully deleted");
-                          getRegister(); // refresh data
-                        }
-                      } catch (error) {
-                        alert("Delete failed");
-                      }
-                    }}
-                  >
-                   <i className="bi bi-trash3-fill"></i>
-                  </button>
-                </button>
-              </div>
-            ))}
+    {/* 🟢 Pagination UI */}
+    {totalPages > 1 && (
+      <div className="pagination">
+        <button onClick={() => setPage((p) => Math.max(p - 1, 1))} disabled={page === 1}>
+          Prev
+        </button>
 
-            {/* 🟢 Pagination UI */}
-            {totalPages > 1 && (
-              <div className="pagination">
-                <button onClick={() => setPage((p) => Math.max(p - 1, 1))} disabled={page === 1}>
-                  Prev
-                </button>
+        {[...Array(totalPages)].map((_, i) => (
+          <button
+            key={i}
+            className={page === i + 1 ? "active" : ""}
+            onClick={() => setPage(i + 1)}
+          >
+            {i + 1}
+          </button>
+        ))}
 
-                {[...Array(totalPages)].map((_, i) => (
-                  <button
-                    key={i}
-                    className={page === i + 1 ? "active" : ""}
-                    onClick={() => setPage(i + 1)}
-                  >
-                    {i + 1}
-                  </button>
-                ))}
+        <button
+          onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
+          disabled={page === totalPages}
+        >
+          Next
+        </button>
+      </div>
+    )}
+  </div>
+)}
 
-                <button
-                  onClick={() => setPage((p) => Math.min(p + 1, totalPages))}
-                  disabled={page === totalPages}
-                >
-                  Next
-                </button>
-              </div>
-            )}
-          </div>
-        )}
 
         {/* 🟡 Registering New Patient UI */}
         {registeringPatient && (
