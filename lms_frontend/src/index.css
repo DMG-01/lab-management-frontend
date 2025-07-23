@@ -72,7 +72,6 @@ body {
   align-items: center;
   background-color: rgb(189, 145, 106);
   height: 50px;
-  overflow-x: auto;
   border-top-left-radius: 15px;
   padding: 0;
   margin: 0;
@@ -116,6 +115,7 @@ body {
 .body p {
   min-width: 100px;
 }
+
 
 .body {
   border-bottom: 2px solid grey;
@@ -309,8 +309,12 @@ body {
   flex-direction: column;
 }
 .register tbody tr td, .register thead th {
-  border : 1px solid red;
   min-width : 160px;
+  border : none
+}
+
+.register tr {
+  border : none;
 }
 
 .serviceSection {

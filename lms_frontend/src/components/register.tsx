@@ -128,11 +128,15 @@ function Register() {
         </div>
 
         <div className="registerFiltering">
+          <div>
            <input type="text" placeholder="🔍 firstName" value = {filterFirstName}  onChange={(e)=> {setFilterFirstName(e.target.value)}} />
            <input type="text" placeholder="🔍 lastName"  value = {filterLastName} onChange = {(e)=> {setFilterLastName(e.target.value)}} />
+           </div>
+           <div>
            <input type="date"  value = {filterStartDate} onChange={(e)=> {setFilterStartDate(e.target.value)}}/> ---
            <input type="date" value = {filterEndDate} onChange={(e)=> {setFilterEndDate(e.target.value)}}/>
            <input type="text" placeholder="labNumber" value={labNumber} onChange={(e)=> {setLabNumber(e.target.value)}} />
+           </div>
         </div>
 
        {!registeringPatient && (
@@ -140,6 +144,7 @@ function Register() {
     <table className="register-table">
       <thead className="head">
         <tr>
+          <th>s/n</th>
           <th>lab number</th>
           <th>first name</th>
           <th>last name</th>
@@ -159,6 +164,7 @@ function Register() {
             style={{ cursor: "pointer" }}
           >
             <td>{index + 1 + (page - 1) * limit}</td>
+            <td>{patient.id}</td>
             <td>{patient.patient?.firstName || "-"}</td>
             <td>{patient.patient?.lastName || "-"}</td>
             <td>{patient.status}</td>
