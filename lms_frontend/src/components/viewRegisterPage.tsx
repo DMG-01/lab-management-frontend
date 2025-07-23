@@ -14,6 +14,7 @@ function ViewRegister() {
   const [uploadingServiceId, setUploadingServiceId] = useState<number | null>(null);
   const [parameterInputs, setParameterInputs] = useState<any[]>([]);
   const [uploadResultValue, setUploadResultValue] = useState<string|undefined>()
+  const [modifyRegisterDetail, setModifyRegisterDetail] = useState(false)
  const [services, setServices] = useState<any[]>([]);
 
  const handlePrint = () => {
@@ -85,7 +86,7 @@ function ViewRegister() {
     if (id) {
       getRegisterDetail();
     }
-  }, [id]);
+  }, [id, modifyRegisterDetail]);
   
   useEffect(()=> {
     getServices()
@@ -126,6 +127,7 @@ function ViewRegister() {
           message : `new service added successfully`, 
           color : `green`
          })
+         setModifyRegisterDetail((prev)=> !prev)
          setTimeout(()=> {
           setDisplayMessage({
             message : ` `, 
