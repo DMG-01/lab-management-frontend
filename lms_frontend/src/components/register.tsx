@@ -9,7 +9,7 @@ function Register() {
   const [reload, setReload]= useState(false)
   const [patients, setPatients] = useState([]);
   const [registeringPatient, isRegisteringPatient] = useState(false);
-  const [services, setServices] = useState([]);
+  const [services, setServices] = useState<any[]>([]);
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -18,6 +18,7 @@ function Register() {
   const [onServiceClick, setServiceClick] = useState(false);
   const [patientServices, setPatientServices] = useState<string[]>([]);
   const [serviceTemplatesIds, setServiceTemplateIds] = useState<number[]>([]);
+  const [totalServiceAmount, setTotalServiceAmount] = useState<number>(0)
 
   // filtering state 
   const [filterFirstName, setFilterFirstName] = useState<string>("")
@@ -293,6 +294,7 @@ function Register() {
                     onChange={(e) => setAmountPaid(e.target.value)}
                     placeholder="amount paid"
                   />
+                  <p>{`#${totalServiceAmount}`}</p>
                 </label>
 
                 <div style={{ position: "relative" }}>
@@ -303,8 +305,11 @@ function Register() {
                           {service}
                           <button
                             className="removeService"
-                            onClick={() =>
+                            onClick={() => {
                               removeService(service, serviceTemplatesIds[index])
+                              setTotalServiceAmount((prev) => prev! - (services.find(s => s.id === serviceTemplatesIds[index])?.price || 0));
+
+                            }
                             }
                           >
                             <i className="bi bi-x"></i>
@@ -324,7 +329,11 @@ function Register() {
                           <li key={index}>
                             <button
                               id={`service-${service.id}`}
-                              onClick={() => addService(service.name, service.id)}
+                              onClick={() =>{ 
+                                addService(service.name, service.id)
+                                setTotalServiceAmount((prev)=> prev + service.price)
+                              }
+                            }
                             >
                               {service.name}
                             </button>
