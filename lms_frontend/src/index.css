@@ -268,6 +268,21 @@ body {
 .services {
   display: flex;
   align-items: center;
+  overflow: auto;
+}
+
+._services {
+  margin-top : 10px;
+  display : flex;
+  align-items: center;
+  background-color : lightcoral;
+  padding : 5px;
+  font-size : 13px;
+  height : 20px;
+  border-radius : 10px;
+  margin-right : 3px;
+  color : white;
+  font-weight : 500px;
 }
 
 .services button {
@@ -542,7 +557,26 @@ body {
   overflow-x:  auto ;
   white-space:nowrap;
 }
+.viewRegister {
+  padding-left : 2%;
+  padding-top : 2%;
+}
 
+#backButton {
+  width : 70px;
+  background-color : lightcoral;
+  color : white;
+  border-radius : 10px;
+  height :30px;
+}
+
+#printBtn {
+  border : 1px solid lightcoral;
+  width : 50px;
+  color : lightcoral;
+  border-radius : 10px;
+   font-weight : 700;
+}
 .viewRegister button {
  margin-right : 10px;
 }

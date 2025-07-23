@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
+import { type messageInterface } from "./loginSignUp";
 
 function ViewRegister() {
   const navigate = useNavigate()
+  const [displayMessage, setDisplayMessage] = useState<messageInterface>()
   const { id } = useParams<{ id: string }>();
   const [registerDetail, setRegisterDetail] = useState<any>(null);
   const [result, setResult] = useState<any>();
@@ -91,13 +93,13 @@ function ViewRegister() {
 
   return (
     <div className="viewRegister">
-      <button className="no_print" onClick = {
+      <button className="no_print" id="backButton" onClick = {
         ()=> {
           navigate("/")
         }
-      }>Back</button>
+      }><i className="bi bi-arrow-left"></i>Back</button>
 
-      <button className="no_print" onClick={ 
+      <button className="no_print" id="printBtn" onClick={ 
         ()=> {
           handlePrint()
         }
@@ -113,7 +115,6 @@ function ViewRegister() {
     async ()=> {
 
       try {
-        alert(`${service.id}`)
         const response = await axios.patch(`http://localhost:5000/register/addService/${registerDetail.id}`, {
            serviceIdToAdd : service.id
         } , {
@@ -126,16 +127,32 @@ function ViewRegister() {
           alert(`failed with response ${response.status}`)
         }
 
-      }catch(error) {
-        alert(error)
+      }catch(error : any) {
+        const status = error.response.status
+        if(status===400) {
+            setDisplayMessage({
+              message : error.response.data.msg, 
+              color : "red"
+            })
+        }
+
+        setTimeout(()=> 
+        {
+          setDisplayMessage({
+            message : "", 
+            color : "white"
+          })
+        }, 3000)
       }
     }
-  }>add</button>
+  }><i className="bi bi-plus"></i></button>
   </div>
 ))
         }
       </div>
       <div className="viewRehHeading">
+      
+        <p style={{ color: displayMessage?.color }}>{displayMessage?.message}</p>
         <h2>Patient Details </h2>
         <h3>Name: {registerDetail?.patient?.firstName} {registerDetail?.patient?.lastName}</h3>
         <h3>Phone: {registerDetail?.patient?.phoneNumber}</h3>
