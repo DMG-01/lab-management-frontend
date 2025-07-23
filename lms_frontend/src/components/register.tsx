@@ -371,7 +371,7 @@ function Register() {
                     </div>                   
                   )}
                 </div>
-                                       <div><p style = {{"color" : `${displayMessage!.color}`}}>{displayMessage!.message}</p></div>
+               <div><p style = {{"color" : `${displayMessage?.color}`}}>{displayMessage?.message}</p></div>
               </div>
 
               <div className="submit">
