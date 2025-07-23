@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import type { messageInterface } from "./loginSignUp";
 import Navigaton from "./navigation";
 import "bootstrap-icons/font/bootstrap-icons.css";
 
@@ -19,6 +20,7 @@ function Register() {
   const [patientServices, setPatientServices] = useState<string[]>([]);
   const [serviceTemplatesIds, setServiceTemplateIds] = useState<number[]>([]);
   const [totalServiceAmount, setTotalServiceAmount] = useState<number>(0)
+  const [displayMessage, setDisplayMessage] = useState<messageInterface>()
 
   // filtering state 
   const [filterFirstName, setFilterFirstName] = useState<string>("")
@@ -87,6 +89,15 @@ function Register() {
   };
 
   const submit = async () => {
+
+    if(!firstName || !lastName || !phoneNumber || !amountPaid) {
+
+      setDisplayMessage({
+        message : "empty input field", 
+        color : "red"
+      })
+      return
+    }
     try {
       const response = await axios.post("http://localhost:5000/register", {
         patientData: {
@@ -100,10 +111,27 @@ function Register() {
   }, {
           withCredentials : true,
   });
+
+  if(response.status === 201) {
+    setDisplayMessage({
+      message : response.data.msg, 
+      color : "green"
+    })
+  }
   setReload(prev => !prev)
       isRegisteringPatient(false);
-    } catch (error) {
-      console.error("Error submitting:", error);
+    } catch (error : any) {
+      const status = error?.response?.status
+
+        if(status === 400) {
+            setDisplayMessage({
+              message : "Missing Required field", 
+              color : "red"
+            })
+
+            return
+        }
+     
     }
   };
 
@@ -340,9 +368,10 @@ function Register() {
                           </li>
                         ))}
                       </ul>
-                    </div>
+                    </div>                   
                   )}
                 </div>
+                                       <div><p style = {{"color" : `${displayMessage!.color}`}}>{displayMessage!.message}</p></div>
               </div>
 
               <div className="submit">

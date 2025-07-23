@@ -3,7 +3,7 @@ import axios from "axios"
 import { useNavigate } from "react-router-dom"
 
 
-interface messageInterface {
+export  interface messageInterface {
     message : string 
     color : string 
 }
