@@ -122,7 +122,16 @@ function ViewRegister() {
         })
 
         if(response.status === 200 ) {
-          alert(`service added succesffully `)
+         setDisplayMessage({
+          message : `new service added successfully`, 
+          color : `green`
+         })
+         setTimeout(()=> {
+          setDisplayMessage({
+            message : ` `, 
+            color : "white"
+          })
+         }, 3000)
         }else {
           alert(`failed with response ${response.status}`)
         }
