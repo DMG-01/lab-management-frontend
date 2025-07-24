@@ -17,6 +17,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
   const [parameterId, setParameterId] = useState<number>()
   const [serviceId, setServiceId] =useState<number>()
   
+
   const getServiceDetails = async (serviceId: number) => {
     try {
       const response = await axios.get(`http://localhost:5000/service/${serviceId}`, {
@@ -50,7 +51,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
 
   useEffect(() => {
     getServiceDetails(props.serviceId);
-  }, [props.serviceId]);
+  }, [props.serviceId,edit]);
 
   return (
     <div className="serviceDetailBody">
@@ -120,8 +121,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
                 <button className="deleteButton"  onClick = {async()=> {
 
                   try {
-                    alert(`paramter id : ${parameter.id}`)
-                    alert(`parameter service id : ${parameter.serviceTemplateId}`)
+                    setEdit(true)
                   const response = await axios.delete(`http://localhost:5000/service/${parameter.serviceTemplateId}/removeproperty/${parameter.id}`, 
                     {
                       withCredentials : true 
@@ -129,7 +129,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
                   )
                   if(response.status == 200) {
                     alert("successfully deleted")
-                    window.location.reload()
+                    setEdit(false)
                   }
                   else {
                     alert("an error occured")
@@ -161,7 +161,7 @@ function RenderServiceDetail(props: { serviceId: number }) {
           }, 
         {withCredentials : true})
          if(response.status === 200) {
-          alert(`parameters changed successful`)
+         
           getServiceDetails(serviceId!)
          } else {
           alert("an error occured")
