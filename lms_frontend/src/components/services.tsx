@@ -18,13 +18,21 @@ function Services() {
   const [addingNewService, setAddingNewService] = useState(false)
   const [newServiceName, setNewServiceName] = useState<string>()
   const [newServicePrice, setNewServicePrice] = useState<string>()
+  const [serviceName, setServiceName] = useState<string>()
 
   const viewMore = (serviceId : number) =>{
     navigate(`/services/${serviceId}`)
   }
   const getServices = async () => {
+
+    const filters = {
+      name : serviceName
+    }
     try {
       const response = await axios.get("http://localhost:5000/service/", {
+        params : {
+          ...filters
+        },
         withCredentials : true
       });
       console.log(response.status);
@@ -65,7 +73,7 @@ const addNewService = async () => {
 
   useEffect(() => {
     getServices();
-  }, [addingNewService]);
+  }, [addingNewService, serviceName]);
 
   return (
     <div className="serviceBody">
@@ -83,7 +91,7 @@ const addNewService = async () => {
 
       <div className="serviceFiltering">
         <div>
-          <input type="text" placeholder=" 🔍 search by name" />
+          <input type="text" placeholder=" 🔍 search by name"  value = {serviceName} onChange = {(e)=>{setServiceName(e.target.value)}}/>
         </div>
 
         <div><button  onClick={()=> {setAddingNewService(true)}}><i className="bi bi-plus">New service</i></button></div>
