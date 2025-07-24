@@ -649,6 +649,19 @@ th, tr, td {
  width : 100%;
 }
 
+.patientBody .patientNavigation {
+  padding-left :2%;
+  margin-top : 10px;
+  margin-bottom : 10px;
+}
+
+.patientNavigation input{
+  border : 1px solid #111827;
+  margin-right : 10px;
+  border-radius : 5px;
+  padding-left : 5px;
+}
+
 .patientBody button{
   color : white;
   background-color :lightblue;
