@@ -3,6 +3,10 @@ import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { type messageInterface } from "./loginSignUp";
 
+interface status  {
+  message : string, 
+  color : string
+}
 function ViewRegister() {
   const navigate = useNavigate()
   const [displayMessage, setDisplayMessage] = useState<messageInterface>()
@@ -17,6 +21,11 @@ function ViewRegister() {
   const [modifyRegisterDetail, setModifyRegisterDetail] = useState(false)
  const [services, setServices] = useState<any[]>([]);
  const [isResultUpload, setIsResultUpload] = useState(false)
+ const [btnStatus, setBtnStatus] = useState<status>({
+  message : "uncompleted", 
+  color : "completed"
+ })
+
  useEffect(()=> {
   getRegisterDetail()
   getServices()
@@ -167,6 +176,20 @@ function ViewRegister() {
         }
       </div>
       <div className="viewRehHeading">
+         <div className="resultStatus"><button
+         style={{"background":`${btnStatus.color}`, color : "white"}}
+         
+         onClick = {()=> {
+            btnStatus.message == "uncompleted"? setBtnStatus({
+              message : "completed", 
+              color : "green"
+            })
+            :
+            setBtnStatus({
+              message : "uncompleted", 
+              color : "red"
+            })
+         }}>{btnStatus.message}</button></div>
       
         <p style={{ color: displayMessage?.color }}>{displayMessage?.message}</p>
         <h2>Patient Details </h2>
@@ -297,8 +320,11 @@ function ViewRegister() {
                 ))
               )}
             </div>
+
+           
           </div>
         ))}
+        
       </div>
     </div>
   );

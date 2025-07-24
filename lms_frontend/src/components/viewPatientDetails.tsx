@@ -69,6 +69,7 @@ const PatientDetail: React.FC<{ patientId: number }> = ({ patientId }) => {
             </div>
         ))}
     </div>
+
     </div>
   );
 };
