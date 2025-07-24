@@ -176,7 +176,7 @@ function ViewRegister() {
         }
       </div>
       <div className="viewRehHeading">
-         <div className="resultStatus"><button
+         <div className="resultStatus"><button className="no_print"
          style={{"background":`${btnStatus.color}`, color : "white"}}
          
          onClick = {()=> {
