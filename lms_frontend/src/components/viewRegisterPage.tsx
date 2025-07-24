@@ -16,7 +16,11 @@ function ViewRegister() {
   const [uploadResultValue, setUploadResultValue] = useState<string|undefined>()
   const [modifyRegisterDetail, setModifyRegisterDetail] = useState(false)
  const [services, setServices] = useState<any[]>([]);
-
+ const [isResultUpload, setIsResultUpload] = useState(false)
+ useEffect(()=> {
+  getRegisterDetail()
+  getServices()
+ }, [isResultUpload])
  const handlePrint = () => {
  
   const elementsToHide = document.querySelectorAll('.no_print');
@@ -61,6 +65,7 @@ function ViewRegister() {
       if (response.status === 200) {
         setUploadingServiceId(serviceId);
         setParameterInputs(response.data._service.testParameters);
+        setIsResultUpload((prev)=> !prev)
       }
     } catch (error) {
       alert("Error fetching service parameters");
@@ -185,7 +190,6 @@ function ViewRegister() {
                   }, 
                 {withCredentials : true});
                   if (response.status === 200) {
-                    alert("Result changed successfully");
                     setIsEditing(false);
                     getRegisterDetail(); // Refresh
                   }
@@ -225,7 +229,7 @@ function ViewRegister() {
         }><i className="bi bi-x-square-fill"></i></button></h4>
             <p>Price: #{eachService.price}</p>
 
-            <button className="no_print" onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>
+            <button style={{"background" : "lightcoral","color" : "white"}} className="no_print" id="uploadResultBtn" onClick={() => uploadResult(eachService.serviceTemplateId, eachService.id)}>
               Upload Result
             </button>
 
