@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 import axios from "axios";
 import { type messageInterface } from "./loginSignUp";
 
@@ -7,10 +7,14 @@ interface status  {
   message : string, 
   color : string
 }
-function ViewRegister() {
+
+interface ViewRegisterProps {
+  id: number;
+} 
+
+function ViewRegister({ id }: ViewRegisterProps) {
   const navigate = useNavigate()
   const [displayMessage, setDisplayMessage] = useState<messageInterface>()
-  const { id } = useParams<{ id: string }>();
   const [registerDetail, setRegisterDetail] = useState<any>(null);
   const [result, setResult] = useState<any>();
   const [resultValue, setResultValue] = useState<string>("");

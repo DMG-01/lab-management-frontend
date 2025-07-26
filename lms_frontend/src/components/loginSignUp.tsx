@@ -15,7 +15,7 @@ function LoginSignUp() {
     const [phoneNumber, setPhoneNumber] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [message, setMessage] = useState<messageInterface>()
-    const [checkingSession, setCheckingSession] = useState(true);
+    
     
 
      useEffect(() => {
@@ -34,7 +34,7 @@ function LoginSignUp() {
       } catch {
 
       } finally {
-        mounted && setCheckingSession(false);
+        mounted;
       }
     })();
 
