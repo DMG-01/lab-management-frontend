@@ -116,10 +116,8 @@ body {
   min-width: 100px;
 }
 
-
 .body {
   border-bottom: 2px solid grey;
-
 }
 
 .top {
@@ -272,17 +270,17 @@ body {
 }
 
 ._services {
-  margin-top : 10px;
-  display : flex;
+  margin-top: 10px;
+  display: flex;
   align-items: center;
-  background-color : lightcoral;
-  padding : 5px;
-  font-size : 13px;
-  height : 20px;
-  border-radius : 10px;
-  margin-right : 3px;
-  color : white;
-  font-weight : 500px;
+  background-color: lightcoral;
+  padding: 5px;
+  font-size: 13px;
+  height: 20px;
+  border-radius: 10px;
+  margin-right: 3px;
+  color: white;
+  font-weight: 500px;
 }
 
 .services button {
@@ -319,17 +317,17 @@ body {
   background-color: transparent;
 }
 .register tbody {
-  display : flex;
+  display: flex;
   flex-direction: column;
 }
-.register tbody tr td, .register thead th {
-  min-width : 160px;
-  border : none
+.register tbody tr td,
+.register thead th {
+  min-width: 160px;
+  border: none;
 }
 
-
 .register tr {
-  border : none;
+  border: none;
 }
 
 .serviceSection {
@@ -422,7 +420,7 @@ body {
 
 .eachInput input {
   width: 100%;
-  border : 1px solid lightcoral;
+  border: 1px solid lightcoral;
   height: 40px;
   font-size: 17px;
   padding-left: 5px;
@@ -520,19 +518,17 @@ body {
 }
 
 .addNewParameter {
-  
-  width :70%;
-  margin-left : 15%;
-  margin-top : 20px;
+  width: 70%;
+  margin-left: 15%;
+  margin-top: 20px;
 }
 
-
 .addNewParameter button {
-  margin-right : 10px;
-  background-color : lightcoral;
-  color : white;
-  min-width :70px;
-  margin-top : 10px;
+  margin-right: 10px;
+  background-color: lightcoral;
+  color: white;
+  min-width: 70px;
+  margin-top: 10px;
 }
 .editButton i {
   color: lightcoral;
@@ -553,49 +549,48 @@ body {
   border: 1px solid red;
 }
 .testParameter {
-  
-  overflow-x:  auto ;
-  white-space:nowrap;
+  overflow-x: auto;
+  white-space: nowrap;
 }
 .viewRegister {
-  padding-left : 2%;
-  padding-top : 2%;
+  padding-left: 2%;
+  padding-top: 2%;
 }
 
 #backButton {
-  width : 70px;
-  background-color : lightcoral;
-  color : white;
-  border-radius : 10px;
-  height :30px;
+  width: 70px;
+  background-color: lightcoral;
+  color: white;
+  border-radius: 10px;
+  height: 30px;
 }
 
 #printBtn {
-  border : 1px solid lightcoral;
-  width : 50px;
-  color : lightcoral;
-  border-radius : 10px;
-   font-weight : 700;
+  border: 1px solid lightcoral;
+  width: 50px;
+  color: lightcoral;
+  border-radius: 10px;
+  font-weight: 700;
 }
 .viewRegister button {
- margin-right : 10px;
+  margin-right: 10px;
 }
- .eachService {
-  border-radius : 15px;
-  width : 90%;
-  margin-left : 5%;
-  box-shadow : 5px 5px 5px lightgrey;
-  margin-bottom : 20px;
+.eachService {
+  border-radius: 15px;
+  width: 90%;
+  margin-left: 5%;
+  box-shadow: 5px 5px 5px lightgrey;
+  margin-bottom: 20px;
 }
 
 .eachService i {
-  color : red;
-  font-weight :900;
-  margin-left :10px
+  color: red;
+  font-weight: 900;
+  margin-left: 10px;
 }
 
 .eachService h4 {
-  font-weight :600
+  font-weight: 600;
 }
 
 .viewRegister .parameterItem {
@@ -605,10 +600,37 @@ body {
 
 .resultComponent button {
   display: flex;
+  border :1px solid green;
   width: 100%;
   align-items: center;
   justify-content: space-around;
 }
+.result-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.result-table th,
+.result-table td {
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  text-align: center;
+}
+
+.result-table th {
+  background-color: #f2f2f2;
+  font-weight: 600;
+  
+}
+
+.result-table tr:hover {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s;
+}
+
 
 .eachServiceResult {
   display: flex;
@@ -616,101 +638,98 @@ body {
   justify-content: center;
 }
 
-
-
 .viewRehHeading {
-  
-  background-color : white;
-  margin-top :20px;
-  width :90%;
-  margin-left : 5%;
-  margin-bottom : 20px;
-  border-radius : 10px;
-  padding:5px 15px;
+  background-color: white;
+  margin-top: 20px;
+  width: 90%;
+  margin-left: 5%;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  padding: 5px 15px;
   box-shadow: 5px 5px 5px lightgrey;
 }
 
 .resultStatus button {
- border-radius : 5px;
- font-weight : 500;
-  padding : 1%;
+  border-radius: 5px;
+  font-weight: 500;
+  padding: 1%;
 }
 
 .viewRehHeading h2 {
-  font-weight : 700;
-  font-size : 20px;
-  
+  font-weight: 700;
+  font-size: 20px;
 }
-th, tr, td {
-  border : 1px solid lightblue;
+th,
+tr,
+td {
+  border: 1px solid lightblue;
   text-align: center;
 }
 
 .patientBody {
-  width : 100%;
-  border : 1px solid lightblue;
+  width: 100%;
+  border: 1px solid lightblue;
 }
 .table {
- overflow: auto;
- white-space: no-wrap;
- width : 100%;
+  overflow: auto;
+  white-space: no-wrap;
+  width: 100%;
 }
 
 .patientBody .patientNavigation {
-  padding-left :2%;
-  margin-top : 10px;
-  margin-bottom : 10px;
+  padding-left: 2%;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
-.patientNavigation input{
-  border : 1px solid #111827;
-  margin-right : 10px;
-  border-radius : 5px;
-  padding-left : 5px;
+.patientNavigation input {
+  border: 1px solid #111827;
+  margin-right: 10px;
+  border-radius: 5px;
+  padding-left: 5px;
 }
 
-.patientBody button{
-  color : white;
-  background-color :lightblue;
-  padding : 5px;
-  margin-top : 10px;
-  border-radius : 5px;
-  margin-left : 2%;
+.patientBody button {
+  color: white;
+  background-color: lightblue;
+  padding: 5px;
+  margin-top: 10px;
+  border-radius: 5px;
+  margin-left: 2%;
 }
 
-.patientOverview h2{
-  margin-left : 2%; 
+.patientOverview h2 {
+  margin-left: 2%;
 }
 
 .patientOverview {
-   border : 1px solid grey;
-   
+  border: 1px solid grey;
 }
-.overviewDisplay  {
-  margin-left : 2%;
-  display : flex;
+.overviewDisplay {
+  margin-left: 2%;
+  display: flex;
   justify-content: start;
 }
 
 .overViewCard {
-  border : 1px solid grey;
-  display : flex;
-  flex-direction : column;
-  padding : 4px;
+  border: 1px solid grey;
+  display: flex;
+  flex-direction: column;
+  padding: 4px;
   margin-right: 4px;
 }
 
 .overViewCard h2 {
-  font-size : 27px;
-  font-weight : 600;
+  font-size: 27px;
+  font-weight: 600;
 }
 
 th {
-  min-width : 100px;
-  padding : 4px;
+  min-width: 100px;
+  padding: 4px;
   text-align: center;
-  height : 30px;
-  color : rgb(32, 32, 43);
+  height: 30px;
+  color: rgb(32, 32, 43);
 }
 
 .patientDeatilRender {
@@ -719,99 +738,92 @@ th {
 .RenderPatientDetail {
   background-color: white;
   box-shadow: 5px 5px 5px lightgray;
-  width : 80%;
-  margin-left : 10%;
-  padding : 2%;
+  width: 80%;
+  margin-left: 10%;
+  padding: 2%;
   border-radius: 10px;
-  margin-bottom : 30px;
+  margin-bottom: 30px;
 }
 
 .registerVisit {
   box-shadow: 5px 5px 5px lightgray;
-  width : 80%;
-  margin-left : 10%;
-  padding : 2%;
-  border-radius : 2%;
+  width: 80%;
+  margin-left: 10%;
+  padding: 2%;
+  border-radius: 2%;
 }
 
 .eachVisit {
-  margin-top : 15px;
-  border : 1px solid grey;
-  padding : 2%;
+  margin-top: 15px;
+  border: 1px solid grey;
+  padding: 2%;
 }
 .testVisitHead p {
-  font-weight : 500;
- 
+  font-weight: 500;
 }
 
 .testVisitServices {
- 
 }
 
 .eachTestVisitServices {
-  border : 1px solid black;
-  padding : 2%;
-  margin-bottom : 10px;
+  border: 1px solid black;
+  padding: 2%;
+  margin-bottom: 10px;
 }
 
 .testVistServiceResult {
- 
 }
 
 .eachResult {
-
-  display : flex;
+  display: flex;
   justify-content: space-between;
   overflow: auto;
 }
 
-
 .loginSignUp {
-  display : flex; 
-  flex-direction : column;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-top: 30%;
-  padding-top :15%;
-  padding-left :3%;
+  padding-top: 15%;
+  padding-left: 3%;
   align-items: start;
 
-  width : 70%;
-  color : 	#111827
+  width: 70%;
+  color: #111827;
 }
 
 .loginSignUp h1 {
-  font-size : 42px;
-text-align: center;
-color : 	#111827;
-font-weight : 500;
+  font-size: 42px;
+  text-align: center;
+  color: #111827;
+  font-weight: 500;
 }
 
 .loginSection {
-
-  display : flex;
-  flex-direction : row;
-  justify-content:  center;
-  align-items : center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 .loginSignUp input {
-  border : 1px solid grey ;
+  border: 1px solid grey;
 }
 
 .loginSignUp .eachInput input {
-  width : 96%;
+  width: 96%;
 }
 
 .loginSignUp .eachInput {
-  margin-bottom : 35px;
+  margin-bottom: 35px;
 }
 
 .loginSignUp button {
-
-  border : none;
-  color : white;
-  background-color : 	#111827;
-  width : 70px;
-  margin-top : 30px;
+  border: none;
+  color: white;
+  background-color: #111827;
+  width: 70px;
+  margin-top: 30px;
 }
 @media (min-width: 1280px) {
   .register .top {
@@ -852,34 +864,31 @@ font-weight : 500;
     width: 179px;
   }
 
- .eachParamsHeading,
-.eachParams{
-    width : auto;
+  .eachParamsHeading,
+  .eachParams {
+    width: auto;
   }
   .table {
-    
-    display : flex;
+    display: flex;
     align-items: center;
     justify-content: center;
   }
-  thead, tr {
-    width : 100%;
+  thead,
+  tr {
+    width: 100%;
   }
 
-  th, td {
-    
-    padding-bottom : 10px;
-    padding-top : 10px;
-    
+  th,
+  td {
+    padding-bottom: 10px;
+    padding-top: 10px;
   }
   .loginSignUp {
-    margin-top : 0;
+    margin-top: 0;
   }
 
   .loginSignUp button {
-    width : 90px;
-    height : 40px;
+    width: 90px;
+    height: 40px;
   }
-
-
 }

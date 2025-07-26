@@ -298,28 +298,39 @@ function ViewRegister() {
             )}
 
             <div className="parameters">
-              <h5>Parameters:</h5>
-              {!eachService?.testResult || eachService.testResult.length === 0 ? (
-                <p>No result found</p>
-              ) : (
-                eachService.testResult.map((eachResult: any) => (
-                  <div className="resultComponent" key={eachResult.id}>
-                    <button
-                      onClick={() => {
-                        setResult(eachResult);
-                        setResultValue(eachResult.value);
-                      }}
-                    >
-                      <p>
-                        {eachResult.parameter.name} ({eachResult.parameter.unit})
-                      </p>
-                      <p>{eachResult.value}</p>
-                      <p>{eachResult.parameter.referenceValue}</p>
-                    </button>
-                  </div>
-                ))
-              )}
-            </div>
+  <h5>Parameters:</h5>
+
+  {!eachService?.testResult || eachService.testResult.length === 0 ? (
+    <p>No result found</p>
+  ) : (
+    <table className="result-table">
+      <thead>
+        <tr>
+          <th>Parameter</th>
+          <th>Value</th>
+          <th>Reference Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {eachService.testResult.map((eachResult: any) => (
+          <tr
+            key={eachResult.id}
+            onClick={() => {
+              setResult(eachResult);
+              setResultValue(eachResult.value);
+            }}
+            style={{ cursor: "pointer" }}
+          >
+            <td>{`${eachResult.parameter.name} (${eachResult.parameter.unit})`}</td>
+            <td>{eachResult.value}</td>
+            <td>{eachResult.parameter.referenceValue}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  )}
+</div>
+
 
            
           </div>
