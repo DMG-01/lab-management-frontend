@@ -15,7 +15,33 @@ function LoginSignUp() {
     const [phoneNumber, setPhoneNumber] = useState<string>("")
     const [password, setPassword] = useState<string>("")
     const [message, setMessage] = useState<messageInterface>()
+    const [checkingSession, setCheckingSession] = useState(true);
     
+
+     useEffect(() => {
+    let mounted = true;
+    (async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/auth", {
+          withCredentials: true,
+        });
+        if (!mounted) return;
+
+        if (res.status === 200) {
+        
+          navigate("/dashboard", { replace: true });
+        }
+      } catch {
+
+      } finally {
+        mounted && setCheckingSession(false);
+      }
+    })();
+
+    return () => {
+      mounted = false;
+    };
+  }, [navigate]);
     const login = async (phoneNumber : string , password : string)=> {
 
         try {
@@ -40,7 +66,7 @@ function LoginSignUp() {
                     message : ` login Successful, redirecting...`, 
                     color : `#111827`
                 })
-                navigate("/dashboard")
+                navigate("/dashboard",{replace:true})
             }
 
           
