@@ -15,7 +15,9 @@ function Register() {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [amountPaid, setAmountPaid] = useState("");
+  const [amountInCash, setAmountInCash] = useState(" ")
+  const [amountInTransfer, setAmountInTransfer] = useState(" ")
+  const [amountInPos, setAmountInPos] = useState(" ")
   const [onServiceClick, setServiceClick] = useState(false);
   const [patientServices, setPatientServices] = useState<string[]>([]);
   const [serviceTemplatesIds, setServiceTemplateIds] = useState<number[]>([]);
@@ -90,7 +92,7 @@ function Register() {
 
   const submit = async () => {
 
-    if(!firstName || !lastName || !phoneNumber || !amountPaid) {
+    if(!firstName || !lastName || !phoneNumber ) {
 
       setDisplayMessage({
         message : "empty input field", 
@@ -105,7 +107,9 @@ function Register() {
           lastName,
           phoneNumber,
           email,
-          amountPaid,
+          amountPaidInCash : amountInCash, 
+          amountPaidWithPos : amountInPos, 
+          amountPaidInTransfer : amountInTransfer
         },
         selectedTemplateIds: serviceTemplatesIds,
   }, {
@@ -315,15 +319,24 @@ function Register() {
               </div>
 
               <div className="three">
-                <label>
-                  <input
-                    type="text"
-                    value={amountPaid}
-                    onChange={(e) => setAmountPaid(e.target.value)}
-                    placeholder="amount paid"
-                  />
+                  <div className="methodOfPayment">
+                    <div className="eachMethodOfPayment">
+                    <label htmlFor="">cash</label>
+                    <input type="text" value={amountInCash} onChange={(e)=> {setAmountInCash(e.target.value)}} />
+                    </div>
+
+                    <div className="eachMethodOfPayment">
+                    <label htmlFor="">transfer</label>
+                    <input type="text"  value={amountInTransfer} onChange={(e)=>{setAmountInTransfer(e.target.value)}}/>
+                    </div>
+
+                    <div className="eachMethodOfPayment">
+                    <label htmlFor="">cash</label>
+                    <input type="text" value = {amountInPos} onChange={(e)=>{setAmountInPos(e.target.value)}} />
+                    </div>
+                  </div>
                   <p>{`#${totalServiceAmount}`}</p>
-                </label>
+              
 
                 <div style={{ position: "relative" }}>
                   <label className="services">
