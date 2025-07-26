@@ -327,6 +327,7 @@ body {
   border : none
 }
 
+
 .register tr {
   border : none;
 }
@@ -866,10 +867,10 @@ font-weight : 500;
   }
 
   th, td {
-    padding-left: 30px;
+    
     padding-bottom : 10px;
     padding-top : 10px;
-    padding-right :30px;
+    
   }
   .loginSignUp {
     margin-top : 0;

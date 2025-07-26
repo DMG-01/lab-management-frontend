@@ -15,9 +15,9 @@ function Register() {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
-  const [amountInCash, setAmountInCash] = useState(" ")
-  const [amountInTransfer, setAmountInTransfer] = useState(" ")
-  const [amountInPos, setAmountInPos] = useState(" ")
+  const [amountInCash, setAmountInCash] = useState<any>()
+  const [amountInTransfer, setAmountInTransfer] = useState<any>()
+  const [amountInPos, setAmountInPos] = useState<any>()
   const [onServiceClick, setServiceClick] = useState(false);
   const [patientServices, setPatientServices] = useState<string[]>([]);
   const [serviceTemplatesIds, setServiceTemplateIds] = useState<number[]>([]);
@@ -201,7 +201,28 @@ function Register() {
             <td>{patient.patient?.firstName || "-"}</td>
             <td>{patient.patient?.lastName || "-"}</td>
             <td>{patient.status}</td>
-            <td>{`#${patient.amountPaid}`}</td>
+<td>
+  <div style={{
+    "fontSize": "13px", "display":""
+  }}>
+    <p>
+    {patient.amountPaidInCash ? (
+      <p >{`Cash: ${patient.amountPaidInCash}`}</p>
+    ) : null}
+
+    {patient.amountPaidWithPos ? (
+      <p>{`POS: ${patient.amountPaidWithPos}`}</p>
+    ) : null}
+
+    {patient.amountPaidInTransfer ? (
+      <p>{`Transfer: ${patient.amountPaidInTransfer}`}</p>
+    ) : null}
+    </p>
+  </div>
+</td>
+
+
+
             <td>{patient.patient?.phoneNumber || "-"}</td>
             <td>{patient.dateTaken}</td>
             <td>
